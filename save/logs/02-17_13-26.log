@@ -1,0 +1,152 @@
+save time:02-17_13-26
+Round   0:
+clients idxes:[81 23 10 20 76 40 33 78  2 31]
+foolsgold aggregation weights: [0.341, 0.341, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0]
+Training average loss 0.861
+Testing accuracy: 15.63%, loss: 2.289
+Round   1:
+clients idxes:[50 59 89  6 75 27 63  3 71 37]
+foolsgold aggregation weights: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Training average loss 0.855
+Testing accuracy: 20.75%, loss: 2.217
+Round   2:
+clients idxes:[85 49 32  9 20 56 84 61 66 86]
+foolsgold aggregation weights: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Training average loss 0.824
+Testing accuracy: 28.01%, loss: 2.074
+Round   3:
+clients idxes:[34 40 83  4 11 74 91 73  1 29]
+foolsgold aggregation weights: [0.245, 0.0, 0.144, 0.0, 0.124, 0.092, 0.0, 1.0, 0.655, 0.0]
+Training average loss 0.698
+Testing accuracy: 31.47%, loss: 2.054
+Round   4:
+clients idxes:[79 55 45 17 83 18 47 96 95  6]
+foolsgold aggregation weights: [0.0, 1.0, 0.294, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.294]
+Training average loss 0.651
+Testing accuracy: 29.03%, loss: 2.002
+Round   5:
+clients idxes:[11 48 19 36 23  4 86 91 12 67]
+foolsgold aggregation weights: [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0]
+Training average loss 0.693
+Testing accuracy: 29.32%, loss: 1.921
+Round   6:
+clients idxes:[85 87 59 25 65 22 15 35 28 42]
+foolsgold aggregation weights: [0.787, 1.0, 0.545, 1.0, 1.0, 1.0, 1.0, 0.545, 1.0, 0.787]
+Training average loss 0.703
+Testing accuracy: 30.84%, loss: 1.927
+Round   7:
+clients idxes:[56 37 22 24  6 52 10 65 92 53]
+foolsgold aggregation weights: [0.0, 0.934, 0.934, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0]
+Training average loss 0.648
+Testing accuracy: 36.82%, loss: 1.873
+Round   8:
+clients idxes:[18 13 63 20 31 47  4 19 97 14]
+foolsgold aggregation weights: [0.0, 1.0, 0.0, 0.0, 0.803, 1.0, 0.0, 1.0, 0.973, 0.803]
+Training average loss 0.569
+Testing accuracy: 31.00%, loss: 1.862
+Round   9:
+clients idxes:[84 20 69 51 65  5 82 25  9 50]
+foolsgold aggregation weights: [0.346, 0.0, 1.0, 0.708, 0.298, 0.0, 0.0, 0.948, 0.708, 0.621]
+Training average loss 0.622
+Testing accuracy: 38.06%, loss: 1.780
+Round  10:
+clients idxes:[ 7 50 42 41 27 58 86 19 85 12]
+foolsgold aggregation weights: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Training average loss 0.550
+Testing accuracy: 41.79%, loss: 1.724
+Round  11:
+clients idxes:[28  4 59 50 56 55  7 63 11 87]
+foolsgold aggregation weights: [1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0]
+Training average loss 0.517
+Testing accuracy: 34.31%, loss: 1.806
+Round  12:
+clients idxes:[93 74 83  3 42 49 36  2  1 72]
+foolsgold aggregation weights: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Training average loss 0.538
+Testing accuracy: 29.41%, loss: 2.022
+Round  13:
+clients idxes:[93 71 58 36 96 25 46 76 20 34]
+foolsgold aggregation weights: [0.519, 1.0, 1.0, 0.822, 1.0, 1.0, 1.0, 0.822, 0.519, 0.932]
+Training average loss 0.555
+Testing accuracy: 33.69%, loss: 1.844
+Round  14:
+clients idxes:[60  6 76 79 45 41 70 19 44 38]
+foolsgold aggregation weights: [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+Training average loss 0.555
+Testing accuracy: 33.04%, loss: 1.853
+Round  15:
+clients idxes:[48 66 64 13 40 45 85 17 55 61]
+foolsgold aggregation weights: [0.139, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.139, 1.0, 1.0]
+Training average loss 0.612
+Testing accuracy: 37.58%, loss: 1.689
+Round  16:
+clients idxes:[55 59 85 94 12 57 10  0 68 19]
+foolsgold aggregation weights: [0.0, 0.0, 1.0, 1.0, 1.0, 0.088, 1.0, 0.088, 0.727, 0.727]
+Training average loss 0.447
+Testing accuracy: 37.87%, loss: 1.777
+Round  17:
+clients idxes:[72 52 27 99 77 26 88 61  8 89]
+foolsgold aggregation weights: [0.0, 0.741, 0.313, 0.734, 0.015, 0.0, 0.015, 0.691, 0.313, 1.0]
+Training average loss 0.514
+Testing accuracy: 37.46%, loss: 1.742
+Round  18:
+clients idxes:[97 83 37 64 42 53 29 50 68 75]
+foolsgold aggregation weights: [0.978, 0.978, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0]
+Training average loss 0.467
+Testing accuracy: 37.29%, loss: 1.746
+Round  19:
+clients idxes:[81  9 93 84 21 26 80 43 54 99]
+foolsgold aggregation weights: [1.0, 0.129, 0.0, 0.033, 0.0, 0.1, 0.0, 0.0, 0.0, 0.148]
+Training average loss 0.502
+Testing accuracy: 40.05%, loss: 1.698
+Round  20:
+clients idxes:[40 13 62 45 80 41 85 11 31 84]
+foolsgold aggregation weights: [1.0, 0.511, 1.0, 0.511, 1.0, 0.572, 1.0, 1.0, 1.0, 0.877]
+Training average loss 0.492
+Testing accuracy: 39.50%, loss: 1.725
+Round  21:
+clients idxes:[21 79 49  3 63 90  8 64 31 33]
+foolsgold aggregation weights: [1.0, 1.0, 1.0, 1.0, 1.0, 0.327, 1.0, 1.0, 0.327, 1.0]
+Training average loss 0.416
+Testing accuracy: 35.50%, loss: 1.740
+Round  22:
+clients idxes:[54 64 47 78 63 14  4 92  2 13]
+foolsgold aggregation weights: [1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0]
+Training average loss 0.461
+Testing accuracy: 38.09%, loss: 1.678
+Round  23:
+clients idxes:[72 78 86 17 29 90 43 98 16 51]
+foolsgold aggregation weights: [0.689, 1.0, 0.0, 1.0, 1.0, 0.187, 0.187, 1.0, 0.0, 1.0]
+Training average loss 0.525
+Testing accuracy: 42.98%, loss: 1.606
+Round  24:
+clients idxes:[31 30 53 24 39 90 80 67 35 27]
+foolsgold aggregation weights: [1.0, 1.0, 0.0, 0.763, 1.0, 1.0, 0.0, 1.0, 0.763, 1.0]
+Training average loss 0.353
+Testing accuracy: 37.26%, loss: 1.748
+Round  25:
+clients idxes:[45 19 77 71 31 23 32 80 57 56]
+foolsgold aggregation weights: [1.0, 0.282, 1.0, 0.0, 0.0, 1.0, 1.0, 0.282, 0.0, 0.0]
+Training average loss 0.381
+Testing accuracy: 38.15%, loss: 1.701
+Round  26:
+clients idxes:[88 82 31 25 60 32 19 11 76 75]
+foolsgold aggregation weights: [1.0, 1.0, 1.0, 0.066, 1.0, 0.066, 1.0, 0.987, 0.987, 1.0]
+Training average loss 0.432
+Testing accuracy: 48.02%, loss: 1.507
+Round  27:
+clients idxes:[37 81 45 49 40 46 73 36 26 61]
+foolsgold aggregation weights: [0.0, 0.235, 1.0, 1.0, 1.0, 0.0, 0.235, 1.0, 1.0, 1.0]
+Training average loss 0.425
+Testing accuracy: 43.40%, loss: 1.592
+Round  28:
+clients idxes:[72  4 78 16 41 93 13 76  0  9]
+foolsgold aggregation weights: [0.713, 0.624, 0.301, 1.0, 0.431, 0.624, 0.588, 0.301, 0.588, 1.0]
+Training average loss 0.516
+Testing accuracy: 46.43%, loss: 1.532
+Round  29:
+clients idxes:[32 70 14 67  6 33 69 37 40 83]
+foolsgold aggregation weights: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+Training average loss 0.428
+Testing accuracy: 37.31%, loss: 1.698
+Round  30:
