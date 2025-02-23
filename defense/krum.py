@@ -3,6 +3,7 @@ import torch
 
 import aggregator
 from utils.logger_config import logger
+from utils import parameters_dict_to_vector
 
 
 class Krum:
@@ -15,7 +16,7 @@ class Krum:
     def exec(self, global_model, client_models, client_idxes, num_dps, aggregator_name):
 
         # flatten the model into a one-dimensional tensor
-        v_client_models = [torch.cat([p.view(-1) for p in cm.values()]).detach().cpu().numpy() for cm in client_models]
+        v_client_models = [parameters_dict_to_vector(cm).detach().cpu().numpy() for cm in client_models]
 
         # compute the distance between different clients
         num_clients = len(client_models)
@@ -41,7 +42,7 @@ class Krum:
         benign_scores = [scores[i].round(2) for i in selected_index]
         adv_clients = [client_idxes[i] for i in non_selected_index]
         adv_scores = [scores[i].round(2) for i in non_selected_index]
-        logger.info('clients idxes:{}'.format(client_idxes))
+
         logger.info("The benign clients: {},\n\t scores:{}".format(benign_clients, benign_scores))
         logger.info("The malicious clients: {},\n\t scores:{}".format(adv_clients, adv_scores))
 

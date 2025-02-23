@@ -9,6 +9,8 @@ FL:
   is_attack: true
   is_defense: true
   aggregator: FedAvg
+  save_model: false
+  plot_loss_curve: false
 
 # local train arguments
 Trainer:
@@ -26,15 +28,15 @@ Trainer:
 # Dataset arguments
 Dataset:
   name: cifar_dataset
-  data_dir:
 
 # Sampling arguments
 Sampler:
-  name: UniformSampler
-#  name: DirichletSampler
+#  name: UniformSampler
+#  args:
+#    groupby: false
+  name: DirichletSampler
   args:
-    groupby: false
-#    alpha: 0.1
+    alpha: 0.5
 
 # Model arguments
 Model:
@@ -45,23 +47,24 @@ Model:
 
 # Defense arguments
 Defense:
-  name: MultiMetrics
+  name: Flame
   args:
-    top_k: 0.6
+    noise: 0.001
 
 # Attack arguments
 Attack:
   name: SemanticAttack
+  adversary_list: [1]
   attack_round: [14]
   poison_images:
-    target_label: 2
+    poison_label_swap: 2
     ## cars with vertically striped walls in the background: 7 + 5 = 12
     train: [ 568, 33105, 33615, 33907, 36848, 40713, 41706 ]
     test: [ 330, 3934, 12336, 30560, 30696 ]
     ## cars with racing stripes: 15 + 7 = 22
-  #  train: [ 2180, 2771, 3233, 4932, 6241, 6813, 6869, 9476, 11395, 11744,
-  #           14209, 14238, 18716, 19793, 20781 ]
-  #  test: [ 21529, 31311, 40518, 40633, 42119, 42663, 49392 ]
+#    train: [ 2180, 2771, 3233, 4932, 6241, 6813, 6869, 9476, 11395, 11744,
+#             14209, 14238, 18716, 19793, 20781 ]
+#    test: [ 21529, 31311, 40518, 40633, 42119, 42663, 49392 ]
     ## green cars: 21 + 9 = 30
 #    train: [389, 561, 874, 1605, 3378, 3678, 4528, 9744, 19165, 19500, 21422,
 #                        22984, 32941, 34287, 34385, 36005, 37365, 37533, 38658, 38735, 39824]
@@ -77,5 +80,3 @@ Attack:
         momentum: 0.5
     stealth_rate: 0
     scale_weight: 10
-
-# other arguments

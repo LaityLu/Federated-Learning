@@ -1,0 +1,80 @@
+gpu: 0
+
+# Federated arguments
+FL:
+  round: 100
+  num_clients: 100
+  frac: 0.1
+  test_batch_size: 128
+  is_attack: true
+  is_defense: true
+  aggregator: FedAvg
+  save_model: false
+  plot_loss_curve: false
+
+# local train arguments
+Trainer:
+  name: ImageClassificationTrainer
+  args:
+    local_epochs: 2
+    batch_size: 64
+    loss_function: nll_loss
+    optimizer:
+      name: SGD
+      args:
+        lr: 0.01
+        momentum: 0.5
+
+# Dataset arguments
+Dataset:
+  name: cifar_dataset
+  data_dir:
+
+# Sampling arguments
+Sampler:
+#  name: UniformSampler
+#  args:
+#    groupby: false
+  name: DirichletSampler
+  args:
+    alpha: 0.5
+
+# Model arguments
+Model:
+  name: CNNCifar
+  args:
+    num_classes: 10
+
+
+# Defense arguments
+Defense:
+  name: Flame
+  args:
+    noise: 0.001
+
+# Attack arguments
+Attack:
+  name: DBA
+  adversary_list: [11, 22, 33, 44]
+  attack_round: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  poison_images:    # it's useless for dba
+  args:
+    local_epochs: 5
+    batch_size: 64
+    loss_function: 'nll_loss'
+    optimizer:
+      name: 'SGD'
+      args:
+        lr: 0.01
+        momentum: 0.5
+    poisoning_per_batch: 5
+    poison_label_swap: 2
+    stealth_rate: 0
+    trigger:
+      channels: 3
+      trigger_num: 4
+      0_poison_pattern: [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5]]
+      1_poison_pattern: [[0, 9], [0, 10], [0, 11], [0, 12], [0, 13], [0, 14]]
+      2_poison_pattern: [[4, 0], [4, 1], [4, 2], [4, 3], [4, 4], [4, 5]]
+      3_poison_pattern: [[4, 9], [4, 10], [4, 11], [4, 12], [4, 13], [4, 14]]
+

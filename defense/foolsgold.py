@@ -4,6 +4,7 @@ import torch
 import sklearn.metrics.pairwise as smp
 
 from utils.logger_config import logger
+from utils import parameters_dict_to_vector
 
 
 # Takes in grad
@@ -46,21 +47,18 @@ def fools_gold(grads, num_clients):
 
 
 def weighted_aggregation(global_model, client_models, weights, num_dps):
-    # freq = weights / np.sum(weights)
+    # weights = weights / np.sum(weights)
     freq = [snd / sum(num_dps) for snd in num_dps]
-    # agg_model = copy.deepcopy(global_model)
-    # for k in agg_model.keys():
-    #     for i in range(len(client_models)):
-    #         # it's to turn num_batches_tracked(int 64) to num_batches_tracked(float 32)
-    #         agg_model[k] = agg_model[k].type(torch.float32)
-    #         agg_model[k] += (client_models[i][k] - global_model[k]) * freq[i] * weights[i]
-    # return agg_model
     agg_model = copy.deepcopy(client_models[0])
-    for k in agg_model.keys():
-        agg_model[k] = agg_model[k] * freq[0] * weights[0]
-    for k in agg_model.keys():
+    for k in global_model.keys():
+        if k.split('.')[-1] == 'num_batches_tracked':
+            continue
+        agg_model[k] = 0.5 * agg_model[k] * freq[0] * weights[0]
+    for k in global_model.keys():
+        if k.split('.')[-1] == 'num_batches_tracked':
+            continue
         for i in range(1, len(client_models)):
-            agg_model[k] += client_models[i][k] * freq[i] * weights[i]
+            agg_model[k] += 0.5 * (client_models[i][k] - global_model[k]) * freq[i] * weights[i]
     return agg_model
 
 
@@ -75,8 +73,8 @@ class FoolsGold:
         self.num_clients = len(client_idxes)
 
         # flatten the model into a one-dimensional tensor
-        v_global_model = torch.cat([p.view(-1) for p in global_model.values()]).detach().cpu().numpy()
-        v_client_models = [torch.cat([p.view(-1) for p in cm.values()]).detach().cpu().numpy() for cm in client_models]
+        v_global_model = parameters_dict_to_vector(global_model).detach().cpu().numpy()
+        v_client_models = [parameters_dict_to_vector(cm).detach().cpu().numpy() for cm in client_models]
 
         # compute the gradients
         grads = []
@@ -111,15 +109,4 @@ class FoolsGold:
         # return the aggregated global model state dict
         return global_model_state_dict
 
-# if __name__ == '__main__':
-#     # test
-#     import model
-#
-#     global_model = getattr(model, 'CNNCifar')(10).to(torch.device('cuda'))
-#     model_1 = getattr(model, 'CNNCifar')(10).to(torch.device('cuda'))
-#     model_2 = getattr(model, 'CNNCifar')(10).to(torch.device('cuda'))
-#     client_models = [model_1.state_dict(), model_2.state_dict()]
-#     client_idxes = [[11, 2], [3, 2]]
-#     defense = FoolsGold(use_memory=True)
-#     for i in range(2):
-#         model = defense.exec(global_model.state_dict(), client_models, client_idxes[i])
+

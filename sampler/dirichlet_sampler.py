@@ -2,7 +2,7 @@ import numpy as np
 
 
 class DirichletSampler:
-    def __init__(self, dataset, num_clients, alpha, is_attack=False, poison_images=None):
+    def __init__(self, dataset, num_clients, alpha, poison_images=None):
         """
         :param dataset:
         :param num_clients:
@@ -13,9 +13,7 @@ class DirichletSampler:
         self.num_dps = len(dataset)
         self.num_clients = num_clients
         self.alpha = alpha
-        self.attack = is_attack
-        if self.attack:
-            self.poison_idxes = set(poison_images['train']) | set(poison_images['test'])
+        self.poison_images = poison_images
 
     def sample(self):
         """
@@ -36,9 +34,9 @@ class DirichletSampler:
         all_labels = self.dataset.targets
         labels = np.unique(all_labels)
         # if attack training, exclude the poisoning data points idxes
-        if self.attack:
-            all_dps_idxes = list(set(all_dps_idxes) - self.poison_idxes)
-            all_labels = np.delete(all_labels, list(self.poison_idxes))
+        if self.poison_images is not None:
+            all_dps_idxes = list(set(all_dps_idxes) - set(self.poison_images['train']) - set(self.poison_images['test']))
+            all_labels = np.delete(all_labels, list(set(self.poison_images['train']) | set(self.poison_images['test'])))
         all_labels = np.array(all_labels)
         all_dps_idxes = np.array(all_dps_idxes)
         # produce the category proportion of each client

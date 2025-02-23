@@ -1,6 +1,7 @@
 import torch
 import numpy as np
 from utils.logger_config import logger
+from utils import parameters_dict_to_vector, visual_pca_whitening
 import aggregator
 
 
@@ -11,8 +12,8 @@ class MultiMetrics:
 
     def exec(self, global_model, client_models, client_idxes, num_dps, aggregator_name):
         # flatten the model into a one-dimensional tensor
-        v_global_model = torch.cat([p.view(-1) for p in global_model.values()]).detach().cpu().numpy()
-        v_client_models = [torch.cat([p.view(-1) for p in cm.values()]).detach().cpu().numpy() for cm in client_models]
+        v_global_model = parameters_dict_to_vector(global_model).detach().cpu().numpy()
+        v_client_models = [parameters_dict_to_vector(cm).detach().cpu().numpy() for cm in client_models]
 
         num_clients = len(client_idxes)
 
@@ -48,27 +49,31 @@ class MultiMetrics:
                     mht_dd[i] += m_dd
 
         # combine into a matrix
-        tri_distance = np.vstack([cos_dd, mht_dd, euc_dd]).T
-        logger.info('clients idxes:{}'.format(client_idxes))
+        tri_distance0 = np.vstack([cos_dd, mht_dd, euc_dd]).T
+        # visual_pca_whitening(tri_distance0, client_idxes)
+        tri_distance = tri_distance0 - tri_distance0.mean(axis=0)
+
         # logger.info('metrics:{}'.format(tri_distance))
-        logger.info('metrics sort:{}'.format(np.argsort(tri_distance, axis=0)))
+        # logger.info('metrics sort:{}'.format(np.argsort(tri_distance, axis=0)))
 
         # compute covariance matrix and inverse matrix or pseudo-inverse matrix
         cov_matrix = np.cov(tri_distance.T)
+        # logger.info('covariance matrix:{}'.format(cov_matrix))
+
         rank = np.linalg.matrix_rank(cov_matrix)
         if rank == cov_matrix.shape[0]:
             inv_matrix = np.linalg.inv(cov_matrix)
         else:
             inv_matrix = np.linalg.pinv(cov_matrix)
 
-        # compute the mahalanobis distance
-        ma_distances = []
+        # whitening process
+        w_distances = []
         for i in range(num_clients):
             t = tri_distance[i]
-            ma_dis = np.dot(np.dot(t, inv_matrix), t.T)
-            ma_distances.append(ma_dis)
+            w_dis = np.dot(np.dot(t, inv_matrix), t.T)
+            w_distances.append(w_dis)
 
-        scores = ma_distances
+        scores = w_distances
         # take the p_num client idxes with the lowest score
         p_num = self.top_k * num_clients
         sorted_list = np.argpartition(scores, int(p_num))

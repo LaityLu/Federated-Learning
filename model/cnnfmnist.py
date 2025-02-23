@@ -3,7 +3,7 @@ import torch.nn.functional as F
 
 
 class CNNFashion_Mnist(nn.Module):
-    def __init__(self,num_channels=1,num_classes=10):
+    def __init__(self, num_channels=1, num_classes=10):
         super(CNNFashion_Mnist, self).__init__()
         self.layer1 = nn.Sequential(
             nn.Conv2d(1, 16, kernel_size=5, padding=2),

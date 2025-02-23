@@ -3,7 +3,7 @@ import numpy as np
 
 class NonUniformSampler:
     # each client has at most 4 types of label
-    def __init__(self, dataset, num_clients, is_attack=False, poison_images=None, **kwargs):
+    def __init__(self, dataset, num_clients, poison_images=None, **kwargs):
         """
         :param dataset:
         :param num_clients:
@@ -13,9 +13,7 @@ class NonUniformSampler:
         self.num_clients = num_clients
         self.num_dps = len(dataset)
         self.num_dps_per_client = int(self.num_dps / self.num_clients)
-        self.attack = is_attack
-        if self.attack:
-            self.poison_idxes = set(poison_images['train']) | set(poison_images['test'])
+        self.poison_images = poison_images
 
     def sample(self):
         """
@@ -34,9 +32,9 @@ class NonUniformSampler:
         # get labels
         labels = self.dataset.targets
         # if attack training, exclude the poisoning data points idxes
-        if self.attack:
-            all_dps_idxes = list(set(all_dps_idxes) - self.poison_idxes)
-            labels = np.delete(labels, list(self.poison_idxes))
+        if self.poison_images is not None:
+            all_dps_idxes = list(set(all_dps_idxes) - set(self.poison_images['train']) - set(self.poison_images['test']))
+            labels = np.delete(labels, list(set(self.poison_images['train']) | set(self.poison_images['test'])))
         # sort all_dps_idxes by label
         idxes_labels = np.vstack((all_dps_idxes, labels))
         idxes_labels = idxes_labels[:, idxes_labels[1, :].argsort()]

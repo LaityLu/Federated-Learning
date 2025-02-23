@@ -2,11 +2,10 @@ import numpy as np
 
 
 class UniformSampler:
-    def __init__(self, dataset, num_clients, groupby=False, is_attack=False, poison_images=None):
+    def __init__(self, dataset, num_clients, groupby=False, poison_images=None):
         """
         :param dataset:
         :param num_clients:
-        :param args:
         :param groupby: ensure every client has all labels
         """
         self.dataset = dataset
@@ -14,9 +13,7 @@ class UniformSampler:
         self.groupby = groupby
         self.num_dps = len(dataset)
         self.num_dps_per_client = int(self.num_dps / self.num_clients)
-        self.attack = is_attack
-        if is_attack:
-            self.poison_idxes = set(poison_images['train']) | set(poison_images['test'])
+        self.poison_images = poison_images
 
     def sample(self):
         """
@@ -31,8 +28,8 @@ class UniformSampler:
         # initial  all data points idxes
         all_dps_idxes = [i for i in range(self.num_dps)]
         # if attack training, exclude the poisoning data points idxes
-        if self.attack:
-            all_dps_idxes = list(set(all_dps_idxes) - self.poison_idxes)
+        if self.poison_images is not None:
+            all_dps_idxes = list(set(all_dps_idxes) - set(self.poison_images['train']) - set(self.poison_images['test']))
         if not self.groupby:
             # just sample the idxes randomly
             for i in range(self.num_clients):
@@ -47,8 +44,8 @@ class UniformSampler:
             all_labels = self.dataset.targets
             labels = np.unique(all_labels)
             # if attack training, exclude the poisoning data points idxes
-            if self.attack:
-                all_labels = np.delete(all_labels, list(self.poison_idxes))
+            if self.poison_images is not None:
+                all_labels = np.delete(all_labels, list(set(self.poison_images['train']) | set(self.poison_images['test'])))
             all_labels = np.array(all_labels)
             all_dps_idxes = np.array(all_dps_idxes)
             # sample the idxes by labels

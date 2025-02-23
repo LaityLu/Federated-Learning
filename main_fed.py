@@ -1,6 +1,5 @@
 import argparse
 import copy
-
 import numpy as np
 import torch
 import yaml
@@ -18,7 +17,7 @@ from utils.logger_config import logger, formatted_time
 if __name__ == '__main__':
     # parse args
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', type=str, default='./config/semantic_foolsgold.yaml',
+    parser.add_argument('--config', type=str, default='./config/semantic_flame.yaml',
                         help='the path of config file')
     args = parser.parse_args()
     # load the config file
@@ -41,7 +40,6 @@ if __name__ == '__main__':
     sampler = getattr(sampler, config['Sampler']['name'])(dataset_train,
                                                           **config['Sampler']['args'],
                                                           num_clients=config['FL']['num_clients'],
-                                                          is_attack=config['FL']['is_attack'],
                                                           poison_images=config['Attack']['poison_images'])
     dict_clients, list_num_dps = sampler.sample()
 
@@ -63,25 +61,34 @@ if __name__ == '__main__':
         defender = getattr(defense, config['Defense']['name'])(**config['Defense']['args'])
 
     # fed training process
+    num_select_clients = max(int(config['FL']['frac'] * config['FL']['num_clients']), 1)
+    clients_idxes = np.arange(config['FL']['num_clients'])
+    if config['FL']['is_attack']:
+        benign_client_idxes = np.setdiff1d(clients_idxes, config['Attack']['adversary_list'])
+    else:
+        benign_client_idxes = clients_idxes
     round_losses = []
     for rd in range(config['FL']['round']):
         # select clients and store their dataset size
-        num_select_clients = max(int(config['FL']['frac'] * config['FL']['num_clients']), 1)
-        select_clients = np.random.choice(range(config['FL']['num_clients']), num_select_clients, replace=False)
+        select_clients = np.random.choice(benign_client_idxes, num_select_clients, replace=False).tolist()
+        if config['FL']['is_attack'] and rd in config['Attack']['attack_round']:
+            # replace the benign clients with malicious clients
+            for i, adv_idxes in enumerate(config['Attack']['adversary_list']):
+                select_clients[i] = adv_idxes
         num_dps = [list_num_dps[i] for i in select_clients]
         # begin training
         print("-----  Round {:3d}  -----".format(rd))
         logger.info("Round {:3d}:".format(rd))
+        logger.info('selected clients:{}'.format(select_clients))
         # store the local loss and local model for each client
         locals_losses = []
         local_models = []
-        have_attack = False
-        for idxes in select_clients:
+        for i, idxes in enumerate(select_clients):
             # confrontation model training
-            if config['FL']['is_attack'] and rd in config['Attack']['attack_round'] and not have_attack:
+            if config['FL']['is_attack'] and rd in config['Attack']['attack_round'] and idxes in config['Attack']['adversary_list']:
                 logger.info('malicious client:{}'.format(idxes))
                 local_model, local_loss = attacker.exec(dataset_train, dict_clients[idxes],
-                                                        copy.deepcopy(global_model))
+                                                        copy.deepcopy(global_model), adversarial_index=i)
                 have_attack = True
             # normal model training
             else:
@@ -116,15 +123,21 @@ if __name__ == '__main__':
         logger.info("Testing accuracy: {:.2f}%, loss: {:.3f}".format(test_accuracy, test_loss))
 
         if config['FL']['is_attack']:
-            test_attack_accuracy, _ = attacker.eval(dataset_train, global_model)
+            # and rd >= config['Attack']['attack_round'][0]
+            if config['Attack']['name'] == 'SemanticAttack':
+                test_attack_accuracy, _ = attacker.eval(dataset_train, global_model)
+            else:
+                test_attack_accuracy, _ = attacker.eval(dataset_test, global_model)
             print("Attack accuracy: {:.2f}%".format(test_attack_accuracy))
             logger.info("Attack accuracy: {:.2f}%".format(test_attack_accuracy))
 
     # save the final global model
-    # torch.save(global_model.state_dict(), './save/save_model/{}_{}.pth'.format(config['Model']['name'], formatted_time))
+    if config['FL']['save_model']:
+        torch.save(global_model.state_dict(), './save/save_model/{}_{}.pth'.format(config['Model']['name'], formatted_time))
 
     # plot training loss curve
-    # plt.figure()
-    # plt.plot(range(len(round_losses)), round_losses)
-    # plt.ylabel('train_loss')
-    # plt.savefig('./save/loss/{}.png'.format(formatted_time))
+    if config['FL']['plot_loss_curve']:
+        plt.figure()
+        plt.plot(range(len(round_losses)), round_losses)
+        plt.ylabel('train_loss')
+        plt.savefig('./save/loss/{}.png'.format(formatted_time))

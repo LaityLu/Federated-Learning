@@ -12,8 +12,12 @@ def FedAvg(client_models, num_dps):
 
     global_model = copy.deepcopy(client_models[0])
     for k in global_model.keys():
+        if k.split('.')[-1] == 'num_batches_tracked':
+            continue
         global_model[k] = global_model[k] * freq[0]
     for k in global_model.keys():
+        if k.split('.')[-1] == 'num_batches_tracked':
+            continue
         for i in range(1, len(client_models)):
             global_model[k] += client_models[i][k] * freq[i]
     return global_model

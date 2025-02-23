@@ -5,7 +5,7 @@ from torch.utils.data import Dataset, DataLoader
 import torch.nn.functional as F
 import torch.optim as optim
 from utils import DatasetSplit
-# from utils.logger_config import logger
+from utils.logger_config import logger
 
 
 def get_dis_loss(g_model, l_model):
@@ -37,12 +37,11 @@ class SemanticAttack:
         self.scale_weight = scale_weight
         self.device = device
 
-    def exec(self, dataset: Dataset, idxes, model: nn.Module):
+    def exec(self, dataset: Dataset, data_idxes, model: nn.Module, *args, **kwargs):
         """
         :param dataset:
-        :param idxes: idxes: the data points idxes
+        :param data_idxes: the data points idxes
         :param model:
-        :param logger:
         :return:
         """
         # copy the global model in the last round
@@ -56,7 +55,7 @@ class SemanticAttack:
         optimizer = getattr(optim, self.optimizer['name'])(model.parameters(), **self.optimizer['args'])
 
         # load dataset
-        train_loader = DataLoader(DatasetSplit(dataset, idxes), batch_size=self.batch_size, shuffle=True)
+        train_loader = DataLoader(DatasetSplit(dataset, data_idxes), batch_size=self.batch_size, shuffle=True)
 
         # start training
         model.train()
@@ -68,10 +67,12 @@ class SemanticAttack:
             # poisoning data for each batch
             for batch_idx, (images, labels) in enumerate(train_loader):
                 for i in range(len(self.poison_images['train'])):
+                    if i == len(images):
+                        break
                     images[i] = dataset[self.poison_images['train'][i]][0]
                     # add gaussian noise
                     images[i].add_(torch.FloatTensor(images[i].shape).normal_(0, 0.01))
-                    labels[i] = self.poison_images['target_label']
+                    labels[i] = self.poison_images['poison_label_swap']
                 images = images.to(self.device)
                 labels = labels.to(self.device)
                 model.zero_grad()
@@ -88,25 +89,12 @@ class SemanticAttack:
                 batch_loss.append(loss.item())
                 # print(sum(batch_loss) / len(batch_loss))
             epoch_loss.append(sum(batch_loss) / len(batch_loss))
-            # print the loss peer epoch
-            # print(f'Epoch {epoch} Loss: {epoch_loss[-1]}')
-            # # 测试对抗性模型在投毒数据上的准确率和损失
-            # acc_p, loss_p = self.attack_test(model, dataset)
-            # print(loss_p)
-            # # 更新学习率
-            # if loss_p <= 0.0001:
-            #     if self.step_lr:
-            #         scheduler.step()
-            #         print("step_lr")
+
         # test the acc and loss of poisoning model on poisoning data
         acc_p, loss_p = self.eval(dataset, model)
         print("local model attack accuracy:{:.2f}%, loss:{:.4f}".format(acc_p, loss_p))
-        # logger.info("local model attack accuracy:{:.2f}%, loss:{:.4f}".format(acc_p, loss_p))
+        logger.info("local model attack accuracy:{:.2f}%, loss:{:.4f}".format(acc_p, loss_p))
 
-        # test the acc and loss of poisoning model on clean test data
-        # acc_train, loss_train = test_img(model, dataset, self.args)
-        # print("Training accuracy: {:.2f}%, loss: {:.3f}".format(acc_train, loss_train))
-        # logger.info("Training accuracy: {:.2f}%, loss: {:.3f}".format(acc_train, loss_train))
         # scale the model weight
         for key, value in model.state_dict().items():
             new_value = global_model[key] + (value - global_model[key]) * self.scale_weight
@@ -129,7 +117,7 @@ class SemanticAttack:
             for batch_idx, (data, target) in enumerate(ldr_test):
                 data, target = data.to(self.device), target.to(self.device)
                 output = model(data)
-                target.fill_(self.poison_images['target_label'])
+                target.fill_(self.poison_images['poison_label_swap'])
                 # compute the loss
                 loss = self.loss_function(output, target)
                 batch_loss.append(loss.item())
