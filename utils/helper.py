@@ -26,7 +26,7 @@ def parameters_dict_to_vector(net_dict) -> torch.Tensor:
     return torch.cat(vec)
 
 
-def visual_pca_whitening(data, client_idxes):
+def visual_pca_whitening(data, client_idxes, round):
     data_D = data - data.mean(axis=0)
     data_C = np.cov(data.T)
     data_value, data_vector = np.linalg.eig(data_C)
@@ -37,7 +37,7 @@ def visual_pca_whitening(data, client_idxes):
     ax = fig.add_subplot(111, projection='3d')
 
     ax.scatter(data_w[:, 0], data_w[:, 1], data_w[:, 2], c='b', label='Data Points')
-    ax.scatter(0, 0, 0, c='r', s=100, label='Origin')
+    ax.scatter(0, 0, 0, c='r', s=10, label='Origin')
 
     ax.set_title('3D Scatter Plot')
     ax.set_xlabel('cos‘')
@@ -48,4 +48,4 @@ def visual_pca_whitening(data, client_idxes):
         ax.text(data_w[i, 0], data_w[i, 1], data_w[i, 2], id, fontsize=8, ha='right', va='bottom')
 
     plt.tight_layout()
-    plt.savefig(f'./save/fig/1.png', bbox_inches='tight')
+    plt.savefig(f'./save/fig/{round}.png', bbox_inches='tight')

@@ -1,0 +1,123 @@
+save time:02-24_13-12
+Round   0:
+selected clients:[10, 30, 16, 94, 49, 86, 50, 74, 29, 15]
+The benign clients: [30, 50, 16, 29, 74, 94],
+	 scores:[5.72, 6.74, 8.23, 6.12, 8.64, 9.3]
+The malicious clients: [49, 10, 86, 15],
+	 scores:[10.24, 17.87, 28.07, 28.25]
+Training average loss 1.666
+Testing accuracy: 13.76%, loss: 2.225
+Attack accuracy: 0.00%
+Round   1:
+selected clients:[1, 73, 79, 48, 0, 38, 92, 63, 53, 52]
+malicious client:1
+local model attack accuracy:100.00%, loss:0.6246
+The benign clients: [92, 0, 79, 48, 53, 38],
+	 scores:[0.19, 0.24, 0.39, 0.99, 0.18, 0.38]
+The malicious clients: [52, 63, 73, 1],
+	 scores:[2.68, 3.75, 6.32, 13.35]
+Training average loss 1.365
+Testing accuracy: 25.81%, loss: 2.028
+Attack accuracy: 0.00%
+Round   2:
+selected clients:[97, 25, 29, 79, 94, 81, 54, 18, 37, 66]
+The benign clients: [97, 18, 81, 54, 37, 25],
+	 scores:[7.03, 7.17, 7.38, 7.66, 7.68, 7.75]
+The malicious clients: [29, 66, 79, 94],
+	 scores:[9.11, 21.31, 26.07, 26.27]
+Training average loss 1.393
+Testing accuracy: 31.19%, loss: 1.885
+Attack accuracy: 0.00%
+Round   3:
+selected clients:[58, 85, 67, 42, 72, 3, 53, 16, 57, 89]
+The benign clients: [3, 72, 67, 57, 58, 16],
+	 scores:[7.1, 6.89, 5.6, 6.35, 9.01, 9.1]
+The malicious clients: [42, 85, 53, 89],
+	 scores:[14.48, 19.0, 24.13, 30.31]
+Training average loss 1.235
+Testing accuracy: 41.13%, loss: 1.652
+Attack accuracy: 0.00%
+Round   4:
+selected clients:[67, 75, 76, 77, 59, 41, 46, 97, 55, 95]
+The benign clients: [67, 59, 55, 41, 75, 77],
+	 scores:[2.16, 2.2, 3.34, 3.34, 2.4, 3.92]
+The malicious clients: [95, 97, 46, 76],
+	 scores:[4.85, 6.03, 10.57, 23.6]
+Training average loss 1.215
+Testing accuracy: 42.54%, loss: 1.601
+Attack accuracy: 0.00%
+Round   5:
+selected clients:[61, 18, 21, 92, 12, 0, 88, 83, 53, 6]
+The benign clients: [92, 61, 6, 88, 83, 53],
+	 scores:[0.91, 0.78, 0.96, 1.03, 1.18, 1.87]
+The malicious clients: [0, 18, 21, 12],
+	 scores:[1.89, 2.79, 8.4, 17.02]
+Training average loss 1.183
+Testing accuracy: 42.09%, loss: 1.578
+Attack accuracy: 0.00%
+Round   6:
+selected clients:[74, 27, 33, 77, 90, 78, 25, 85, 75, 15]
+The benign clients: [25, 74, 85, 77, 27, 15],
+	 scores:[2.06, 2.3, 2.34, 3.61, 2.07, 5.71]
+The malicious clients: [75, 78, 90, 33],
+	 scores:[6.95, 12.1, 13.13, 21.4]
+Training average loss 1.161
+Testing accuracy: 43.21%, loss: 1.577
+Attack accuracy: 0.00%
+Round   7:
+selected clients:[30, 92, 60, 85, 64, 4, 62, 67, 90, 53]
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+posx and posy should be finite values
+The benign clients: [60, 64, 53, 67, 62, 30],
+	 scores:[9.62, 9.52, 10.27, 15.09, 10.9, 15.38]
+The malicious clients: [4, 90, 85, 92],
+	 scores:[25.99, 28.41, 30.4, 32.86]
+Training average loss 1.017
+Testing accuracy: 38.65%, loss: 1.664
+Attack accuracy: 0.00%
+Round   8:
+selected clients:[58, 54, 65, 59, 26, 71, 28, 56, 82, 83]
+The benign clients: [71, 28, 65, 58, 54, 59],
+	 scores:[2.19, 2.48, 2.08, 1.9, 1.9, 3.14]
+The malicious clients: [56, 83, 82, 26],
+	 scores:[5.33, 8.16, 21.94, 8.72]
+Training average loss 1.049
+Testing accuracy: 44.91%, loss: 1.550
+Attack accuracy: 0.00%
+Round   9:
+selected clients:[18, 38, 63, 62, 28, 35, 99, 17, 49, 24]
+The benign clients: [35, 24, 49, 62, 38, 18],
+	 scores:[6.49, 6.73, 10.6, 5.26, 5.09, 11.5]
+The malicious clients: [28, 63, 99, 17],
+	 scores:[16.01, 18.94, 25.88, 27.04]
+Training average loss 1.085
+Testing accuracy: 49.46%, loss: 1.431
+Attack accuracy: 0.00%

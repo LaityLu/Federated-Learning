@@ -1,0 +1,1297 @@
+save time:02-24_15-32
+Round   0:
+selected clients:[87, 84, 72, 80, 23, 94, 81, 91, 90, 13, 38, 24, 46, 45, 74, 39, 63, 2, 29, 4]
+The benign clients: [38. 87. 81. 63. 72. 84. 46. 91. 29. 94.],
+	 scores:[0.02 0.07 0.1  0.14 0.17 0.17 0.18 0.18 0.22 0.26]
+The malicious clients: [ 2. 23. 13. 90. 24. 39. 74. 45.  4. 80.],
+	 scores:[ 0.33  0.37  0.44  0.45  0.63  1.21  1.34  2.47 11.63 17.62]
+Training average loss 1.637
+Testing accuracy: 22.08%, loss: 2.207
+Attack accuracy: 0.00%
+Round   1:
+selected clients:[11, 22, 33, 44, 85, 49, 30, 46, 90, 38, 69, 80, 39, 73, 4, 54, 20, 45, 78, 61]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [73. 46. 69. 61. 85. 38. 49. 78. 20. 45.],
+	 scores:[0.09 0.21 0.21 0.22 0.23 0.23 0.25 0.25 0.26 0.34]
+The malicious clients: [90. 44. 39. 30. 22. 54.  4. 33. 11. 80.],
+	 scores:[ 0.38  0.47  0.48  0.52  0.83  1.2   3.56  4.52  6.72 17.02]
+Training average loss 1.446
+Testing accuracy: 25.05%, loss: 2.003
+Attack accuracy: 0.00%
+Round   2:
+selected clients:[11, 22, 33, 44, 8, 80, 3, 54, 78, 94, 97, 62, 16, 76, 12, 47, 17, 84, 28, 91]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [44. 91.  3. 78. 84. 17. 76. 97. 47. 94.],
+	 scores:[0.18 0.19 0.19 0.19 0.2  0.25 0.25 0.3  0.31 0.32]
+The malicious clients: [ 8. 12. 22. 62. 16. 54. 28. 11. 33. 80.],
+	 scores:[ 0.33  0.35  0.39  0.42  1.42  1.51  4.65  4.79  4.97 16.76]
+Training average loss 1.362
+Testing accuracy: 36.94%, loss: 1.784
+Attack accuracy: 100.00%
+Round   3:
+selected clients:[11, 22, 33, 44, 18, 30, 57, 23, 1, 73, 25, 36, 90, 29, 39, 27, 5, 43, 77, 84]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [73. 25. 39. 84. 36.  5. 43. 23.  1. 90.],
+	 scores:[0.05 0.1  0.27 0.34 0.48 0.48 0.57 0.58 0.59 0.63]
+The malicious clients: [18. 57. 29. 30. 44. 33. 22. 77. 11. 27.],
+	 scores:[0.65 0.66 0.68 0.69 2.58 3.88 4.38 4.54 6.45 9.4 ]
+Training average loss 1.277
+Testing accuracy: 37.87%, loss: 1.718
+Attack accuracy: 0.00%
+Round   4:
+selected clients:[11, 22, 33, 44, 62, 60, 51, 10, 17, 42, 59, 86, 99, 16, 57, 53, 78, 80, 88, 66]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [44. 16. 22. 60. 10. 17. 59. 57. 78. 88.],
+	 scores:[0.01 0.02 0.15 0.22 0.22 0.24 0.25 0.25 0.26 0.26]
+The malicious clients: [42. 66. 86. 51. 62. 33. 11. 53. 99. 80.],
+	 scores:[ 0.26  0.27  0.27  0.31  0.38  1.38  1.83  3.14 12.73 15.53]
+Training average loss 1.283
+Testing accuracy: 43.64%, loss: 1.595
+Attack accuracy: 100.00%
+Round   5:
+selected clients:[11, 22, 33, 44, 73, 9, 91, 39, 76, 74, 34, 62, 65, 99, 48, 60, 3, 66, 5, 53]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [74. 91. 39. 34. 76. 65.  3.  5. 66. 60.],
+	 scores:[0.13 0.14 0.19 0.21 0.22 0.23 0.24 0.24 0.25 0.25]
+The malicious clients: [44. 73. 22. 48. 62.  9. 33. 11. 53. 99.],
+	 scores:[ 0.37  0.41  0.67  1.01  1.37  1.71  3.82  4.23  6.01 16.31]
+Training average loss 1.192
+Testing accuracy: 42.03%, loss: 1.601
+Attack accuracy: 0.00%
+Round   6:
+selected clients:[11, 22, 33, 44, 63, 52, 43, 88, 84, 28, 74, 68, 12, 7, 46, 16, 83, 35, 90, 18]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [35. 43. 90. 12. 46. 63. 84.  7. 88. 83.],
+	 scores:[0.04 0.39 0.44 0.45 0.48 0.55 0.61 0.68 0.7  0.73]
+The malicious clients: [74. 18. 68. 44. 16. 52. 33. 22. 11. 28.],
+	 scores:[ 0.74  0.75  0.76  0.82  1.48  1.8   3.5   4.33  5.3  13.44]
+Training average loss 1.176
+Testing accuracy: 40.96%, loss: 1.577
+Attack accuracy: 0.00%
+Round   7:
+selected clients:[11, 22, 33, 44, 20, 50, 95, 1, 60, 58, 31, 92, 76, 78, 35, 97, 79, 66, 39, 38]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [35. 38.  1. 20. 76. 66. 50. 97. 78. 39.],
+	 scores:[0.13 0.18 0.3  0.33 0.37 0.4  0.41 0.43 0.44 0.44]
+The malicious clients: [31. 60. 95. 44. 22. 33. 58. 79. 11. 92.],
+	 scores:[ 0.45  0.45  0.45  0.87  1.09  2.88  4.94  5.37  6.73 11.35]
+Training average loss 1.162
+Testing accuracy: 43.93%, loss: 1.522
+Attack accuracy: 0.00%
+Round   8:
+selected clients:[11, 22, 33, 44, 96, 73, 6, 29, 4, 31, 10, 35, 82, 76, 71, 23, 55, 88, 12, 1]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [73. 35. 82.  6. 29. 76. 71.  1. 23. 10.],
+	 scores:[0.12 0.21 0.26 0.33 0.43 0.45 0.54 0.55 0.56 0.57]
+The malicious clients: [31. 88. 12. 96. 44. 22. 33. 11. 55.  4.],
+	 scores:[ 0.59  0.59  0.59  0.94  1.1   3.72  4.57  5.05  6.34 10.49]
+Training average loss 1.156
+Testing accuracy: 48.98%, loss: 1.437
+Attack accuracy: 0.00%
+Round   9:
+selected clients:[11, 22, 33, 44, 36, 13, 40, 52, 70, 98, 5, 82, 77, 15, 16, 87, 42, 67, 30, 60]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [16. 36. 82. 42. 13. 70. 60.  5. 87. 67.],
+	 scores:[0.2  0.53 0.61 0.63 0.67 0.68 0.69 0.7  0.7  0.74]
+The malicious clients: [30. 98. 44. 77. 40. 52. 22. 33. 11. 15.],
+	 scores:[0.82 0.94 1.41 1.48 1.84 1.89 3.44 5.33 6.13 8.59]
+Training average loss 1.088
+Testing accuracy: 44.52%, loss: 1.476
+Attack accuracy: 0.00%
+Round  10:
+selected clients:[11, 22, 33, 44, 27, 7, 55, 56, 96, 31, 20, 97, 91, 94, 54, 8, 57, 9, 88, 79]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [55.  9. 96. 88. 94. 79.  7. 31. 91. 54.],
+	 scores:[0.06 0.1  0.12 0.33 0.37 0.49 0.61 0.64 0.66 0.7 ]
+The malicious clients: [20. 97. 57.  8. 44. 33. 27. 22. 11. 56.],
+	 scores:[ 0.74  0.75  0.75  0.75  2.49  2.59  2.78  3.68  8.16 11.25]
+Training average loss 1.041
+Testing accuracy: 50.93%, loss: 1.374
+Attack accuracy: 0.00%
+Round  11:
+selected clients:[11, 22, 33, 44, 9, 4, 31, 42, 95, 93, 54, 56, 58, 7, 0, 47, 5, 6, 89, 85]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [ 5. 58.  7. 42. 56.  6.  0. 85. 54. 95.],
+	 scores:[0.29 0.34 0.5  0.52 0.53 0.55 0.55 0.57 0.57 0.64]
+The malicious clients: [47. 31. 44.  9. 33. 22. 93. 11. 89.  4.],
+	 scores:[0.68 0.99 1.   1.34 2.73 2.93 3.7  6.14 6.61 6.82]
+Training average loss 1.062
+Testing accuracy: 50.20%, loss: 1.369
+Attack accuracy: 0.00%
+Round  12:
+selected clients:[11, 22, 33, 44, 91, 52, 23, 2, 27, 55, 49, 89, 20, 29, 38, 86, 10, 40, 51, 3]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [52. 38. 86. 55. 29. 49.  3. 10. 91. 51.],
+	 scores:[0.15 0.29 0.44 0.52 0.54 0.55 0.55 0.6  0.6  0.68]
+The malicious clients: [20.  2. 23. 44. 40. 22. 33. 89. 27. 11.],
+	 scores:[0.72 0.72 1.24 1.55 2.28 3.71 4.14 5.82 6.08 6.8 ]
+Training average loss 0.998
+Testing accuracy: 51.70%, loss: 1.344
+Attack accuracy: 0.00%
+Round  13:
+selected clients:[11, 22, 33, 44, 34, 62, 74, 28, 43, 71, 64, 69, 24, 79, 90, 65, 96, 49, 25, 77]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [96. 43. 25. 69. 90. 71. 74. 24. 34. 49.],
+	 scores:[0.13 0.2  0.2  0.34 0.47 0.48 0.51 0.54 0.56 0.56]
+The malicious clients: [62. 65. 79. 64. 22. 77. 44. 33. 11. 28.],
+	 scores:[0.57 0.62 0.76 1.18 2.69 3.13 3.85 3.94 7.41 9.86]
+Training average loss 1.008
+Testing accuracy: 48.04%, loss: 1.402
+Attack accuracy: 0.00%
+Round  14:
+selected clients:[11, 22, 33, 44, 7, 91, 26, 45, 49, 70, 73, 39, 83, 62, 60, 27, 29, 15, 76, 85]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [85. 49. 73. 70. 83. 91. 29. 45.  7. 26.],
+	 scores:[0.21 0.23 0.28 0.33 0.46 0.51 0.52 0.54 0.57 0.57]
+The malicious clients: [60. 76. 39. 62. 44. 22. 33. 15. 11. 27.],
+	 scores:[0.58 0.59 0.6  1.09 2.15 2.71 4.49 6.27 7.11 8.19]
+Training average loss 0.965
+Testing accuracy: 50.54%, loss: 1.344
+Attack accuracy: 0.00%
+Round  15:
+selected clients:[11, 22, 33, 44, 83, 93, 73, 66, 48, 91, 3, 90, 75, 69, 57, 9, 60, 70, 43, 37]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [90. 43. 73. 44. 37. 57. 69. 66. 60. 83.],
+	 scores:[0.13 0.13 0.2  0.33 0.35 0.37 0.39 0.4  0.43 0.43]
+The malicious clients: [70. 91.  3. 22. 75.  9. 33. 48. 11. 93.],
+	 scores:[ 0.43  0.44  0.46  1.08  2.03  2.33  2.64  4.05  8.68 12.71]
+Training average loss 0.972
+Testing accuracy: 49.72%, loss: 1.373
+Attack accuracy: 0.00%
+Round  16:
+selected clients:[11, 22, 33, 44, 88, 69, 99, 21, 70, 84, 75, 76, 7, 32, 35, 47, 14, 19, 83, 72]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [44. 84. 14. 70. 72. 32. 76.  7. 69. 47.],
+	 scores:[0.09 0.13 0.14 0.15 0.22 0.22 0.25 0.25 0.26 0.31]
+The malicious clients: [83. 88. 35. 22. 19. 75. 21. 33. 11. 99.],
+	 scores:[ 0.49  0.65  0.7   0.78  0.8   1.17  3.55  4.4   6.1  17.33]
+Training average loss 0.982
+Testing accuracy: 52.12%, loss: 1.307
+Attack accuracy: 100.00%
+Round  17:
+selected clients:[11, 22, 33, 44, 76, 89, 53, 54, 58, 99, 4, 56, 82, 17, 37, 55, 79, 95, 43, 16]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [55. 58. 37. 54. 53. 43. 82. 79. 16. 17.],
+	 scores:[0.12 0.17 0.22 0.23 0.25 0.28 0.28 0.32 0.41 0.44]
+The malicious clients: [76. 89. 22. 44. 95.  4. 56. 11. 33. 99.],
+	 scores:[ 0.49  0.71  0.75  0.79  0.98  2.06  3.17  4.85  5.08 16.41]
+Training average loss 0.945
+Testing accuracy: 53.18%, loss: 1.286
+Attack accuracy: 100.00%
+Round  18:
+selected clients:[11, 22, 33, 44, 2, 68, 38, 91, 87, 90, 76, 97, 32, 65, 75, 7, 34, 31, 39, 5]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [ 5. 91. 38. 32. 76. 90. 97.  2. 39.  7.],
+	 scores:[0.26 0.28 0.31 0.35 0.35 0.39 0.42 0.45 0.47 0.47]
+The malicious clients: [65. 34. 68. 87. 31. 44. 33. 75. 11. 22.],
+	 scores:[0.49 0.49 0.5  0.5  0.51 2.78 4.58 7.13 7.33 9.94]
+Training average loss 0.939
+Testing accuracy: 52.71%, loss: 1.291
+Attack accuracy: 0.00%
+Round  19:
+selected clients:[11, 22, 33, 44, 59, 0, 69, 94, 14, 6, 76, 54, 7, 32, 1, 81, 18, 82, 34, 79]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [ 1. 81. 76. 32. 34.  0. 94.  7. 69. 82.],
+	 scores:[0.16 0.36 0.43 0.5  0.53 0.54 0.55 0.55 0.6  0.6 ]
+The malicious clients: [14.  6. 79. 18. 33. 59. 54. 44. 11. 22.],
+	 scores:[0.64 0.74 0.83 0.83 3.51 3.55 5.09 5.49 6.08 6.44]
+Training average loss 0.929
+Testing accuracy: 54.40%, loss: 1.253
+Attack accuracy: 0.00%
+Round  20:
+selected clients:[11, 22, 33, 44, 52, 68, 65, 40, 17, 5, 27, 62, 39, 2, 70, 78, 75, 42, 35, 49]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [ 5. 65. 17. 42.  2. 78. 39. 68. 70. 35.],
+	 scores:[0.08 0.54 0.59 0.7  0.71 0.77 0.79 0.88 0.91 1.13]
+The malicious clients: [49. 62. 75. 27. 44. 52. 33. 22. 40. 11.],
+	 scores:[1.19 1.46 1.71 1.83 2.09 2.77 3.87 4.11 5.21 6.66]
+Training average loss 0.938
+Testing accuracy: 56.42%, loss: 1.218
+Attack accuracy: 0.00%
+Round  21:
+selected clients:[11, 22, 33, 44, 20, 60, 17, 37, 30, 64, 26, 25, 9, 23, 34, 27, 4, 71, 49, 69]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [34. 26. 17.  9. 37. 49. 20. 25. 69. 71.],
+	 scores:[0.27 0.46 0.51 0.56 0.58 0.6  0.6  0.65 0.89 0.93]
+The malicious clients: [60. 64. 30. 23. 44. 33. 22.  4. 11. 27.],
+	 scores:[0.97 0.97 1.25 1.53 1.87 3.09 3.83 4.81 6.36 7.26]
+Training average loss 0.883
+Testing accuracy: 53.90%, loss: 1.252
+Attack accuracy: 0.00%
+Round  22:
+selected clients:[11, 22, 33, 44, 37, 90, 36, 66, 63, 45, 60, 39, 23, 82, 71, 59, 95, 30, 99, 46]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [63. 90. 23. 45. 59. 46. 66. 37. 60. 71.],
+	 scores:[0.02 0.07 0.11 0.14 0.15 0.22 0.24 0.25 0.27 0.36]
+The malicious clients: [82. 39. 36. 95. 22. 44. 33. 30. 11. 99.],
+	 scores:[ 0.46  0.5   0.53  0.61  1.01  1.26  2.77  3.25  7.84 17.95]
+Training average loss 0.933
+Testing accuracy: 52.11%, loss: 1.278
+Attack accuracy: 0.00%
+Round  23:
+selected clients:[11, 22, 33, 44, 23, 84, 98, 85, 65, 38, 5, 79, 62, 95, 61, 57, 53, 66, 80, 34]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [85. 66. 38. 34. 23. 62. 57. 95. 65. 61.],
+	 scores:[0.04 0.07 0.08 0.16 0.19 0.32 0.39 0.4  0.41 0.42]
+The malicious clients: [ 5. 44. 84. 79. 53. 98. 22. 33. 11. 80.],
+	 scores:[ 0.42  0.65  0.7   1.51  1.64  1.97  2.21  2.28  6.29 17.85]
+Training average loss 0.875
+Testing accuracy: 55.66%, loss: 1.215
+Attack accuracy: 0.00%
+Round  24:
+selected clients:[11, 22, 33, 44, 95, 80, 15, 37, 20, 39, 32, 68, 9, 48, 18, 54, 93, 24, 99, 23]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [ 9. 22. 32. 15. 44. 37. 18. 24. 95. 20.],
+	 scores:[0.15 0.19 0.2  0.24 0.24 0.24 0.31 0.31 0.35 0.36]
+The malicious clients: [39. 68. 23. 48. 54. 33. 93. 11. 99. 80.],
+	 scores:[ 0.37  0.37  0.39  0.52  0.59  0.62  0.85  1.28 12.64 17.77]
+Training average loss 0.931
+Testing accuracy: 57.28%, loss: 1.182
+Attack accuracy: 100.00%
+Round  25:
+selected clients:[11, 22, 33, 44, 24, 35, 27, 55, 72, 50, 51, 3, 18, 40, 61, 5, 17, 71, 49, 16]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [51.  5. 16.  3. 72. 24. 17. 71. 49. 18.],
+	 scores:[0.26 0.33 0.36 0.42 0.5  0.54 0.55 0.56 0.58 0.58]
+The malicious clients: [50. 27. 61. 35. 44. 55. 33. 40. 11. 22.],
+	 scores:[0.72 0.82 0.93 1.07 2.86 3.46 4.63 4.9  6.25 7.67]
+Training average loss 0.870
+Testing accuracy: 55.82%, loss: 1.192
+Attack accuracy: 100.00%
+Round  26:
+selected clients:[11, 22, 33, 44, 16, 56, 97, 25, 81, 77, 92, 80, 50, 20, 67, 38, 60, 4, 23, 45]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [38. 25. 50. 23. 67. 56. 16. 20. 97. 60.],
+	 scores:[0.06 0.2  0.21 0.24 0.25 0.27 0.31 0.36 0.41 0.42]
+The malicious clients: [45. 81. 22. 77. 33. 44.  4. 11. 92. 80.],
+	 scores:[ 0.43  0.45  0.51  0.63  1.23  2.28  2.48  3.08  9.13 15.05]
+Training average loss 0.887
+Testing accuracy: 58.31%, loss: 1.175
+Attack accuracy: 0.00%
+Round  27:
+selected clients:[11, 22, 33, 44, 19, 42, 41, 60, 8, 78, 91, 86, 35, 67, 1, 56, 61, 13, 87, 80]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [87. 42.  1.  8. 78. 13. 35. 67. 91. 86.],
+	 scores:[0.11 0.12 0.13 0.15 0.16 0.16 0.4  0.41 0.43 0.47]
+The malicious clients: [19. 41. 60. 61. 44. 56. 22. 33. 11. 80.],
+	 scores:[ 0.58  0.64  0.69  0.97  1.43  1.65  2.    2.86  6.66 17.99]
+Training average loss 0.853
+Testing accuracy: 57.05%, loss: 1.190
+Attack accuracy: 100.00%
+Round  28:
+selected clients:[11, 22, 33, 44, 9, 13, 57, 53, 47, 31, 26, 3, 91, 6, 42, 87, 50, 15, 92, 25]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [31.  9. 50. 91.  6. 87. 26.  3. 47. 25.],
+	 scores:[0.01 0.19 0.44 0.48 0.5  0.51 0.52 0.52 0.54 0.54]
+The malicious clients: [13. 57. 42. 22. 33. 92. 53. 44. 11. 15.],
+	 scores:[ 0.56  0.58  0.58  1.31  2.37  2.43  3.07  3.21  5.44 14.21]
+Training average loss 0.879
+Testing accuracy: 57.87%, loss: 1.161
+Attack accuracy: 0.00%
+Round  29:
+selected clients:[11, 22, 33, 44, 57, 40, 8, 92, 28, 42, 83, 35, 94, 58, 16, 70, 60, 31, 82, 14]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [16. 31. 35. 70. 94.  8. 82. 42. 83. 14.],
+	 scores:[0.23 0.26 0.26 0.31 0.32 0.35 0.37 0.43 0.45 0.45]
+The malicious clients: [60. 58. 57. 40. 44. 22. 33. 11. 28. 92.],
+	 scores:[ 0.45  0.54  0.55  1.12  1.23  1.84  3.26  5.55  8.84 11.17]
+Training average loss 0.852
+Testing accuracy: 59.46%, loss: 1.135
+Attack accuracy: 0.00%
+Round  30:
+selected clients:[11, 22, 33, 44, 64, 39, 8, 41, 30, 55, 50, 91, 70, 42, 46, 75, 52, 65, 3, 73]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [46. 73. 41. 42. 39. 65. 91.  3. 70. 64.],
+	 scores:[0.15 0.34 0.43 0.46 0.51 0.54 0.56 0.58 0.61 0.62]
+The malicious clients: [75. 50. 30. 44. 22.  8. 55. 33. 11. 52.],
+	 scores:[0.85 1.23 1.65 1.78 2.26 2.49 2.94 3.15 7.33 9.54]
+Training average loss 0.829
+Testing accuracy: 59.86%, loss: 1.129
+Attack accuracy: 0.00%
+Round  31:
+selected clients:[11, 22, 33, 44, 47, 95, 19, 23, 14, 70, 72, 96, 37, 26, 15, 66, 31, 79, 71, 21]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [96. 31. 66. 47. 26. 71. 70. 79. 37. 14.],
+	 scores:[0.06 0.08 0.27 0.35 0.51 0.54 0.62 0.63 0.63 0.63]
+The malicious clients: [72. 95. 23. 22. 21. 33. 44. 19. 11. 15.],
+	 scores:[0.64 0.66 0.73 1.71 1.91 2.2  2.57 6.33 6.93 9.99]
+Training average loss 0.799
+Testing accuracy: 59.28%, loss: 1.130
+Attack accuracy: 100.00%
+Round  32:
+selected clients:[11, 22, 33, 44, 2, 5, 95, 34, 90, 88, 29, 25, 16, 77, 0, 36, 96, 28, 65, 79]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [96. 36. 25. 16.  0. 90. 29. 65.  5. 34.],
+	 scores:[0.03 0.09 0.52 0.57 0.66 0.67 0.69 0.72 0.73 0.75]
+The malicious clients: [88. 95. 79.  2. 77. 44. 22. 33. 11. 28.],
+	 scores:[0.76 0.76 0.78 0.8  1.57 1.7  3.03 5.92 7.66 9.59]
+Training average loss 0.773
+Testing accuracy: 59.45%, loss: 1.124
+Attack accuracy: 100.00%
+Round  33:
+selected clients:[11, 22, 33, 44, 4, 31, 76, 78, 81, 30, 80, 15, 56, 21, 7, 89, 23, 88, 18, 32]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [15. 21. 88. 32. 23.  7. 76. 78. 18. 81.],
+	 scores:[0.11 0.22 0.22 0.25 0.31 0.38 0.41 0.41 0.54 0.54]
+The malicious clients: [31. 56. 30. 44.  4. 22. 33. 89. 11. 80.],
+	 scores:[ 0.56  0.72  0.87  1.07  1.36  1.81  2.57  4.22  6.71 14.72]
+Training average loss 0.840
+Testing accuracy: 60.74%, loss: 1.092
+Attack accuracy: 0.00%
+Round  34:
+selected clients:[11, 22, 33, 44, 32, 37, 64, 5, 26, 27, 47, 73, 65, 18, 46, 3, 23, 60, 40, 55]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [46. 47. 37. 32.  5. 23. 18. 73. 64. 65.],
+	 scores:[0.04 0.23 0.28 0.32 0.34 0.34 0.34 0.35 0.41 0.43]
+The malicious clients: [60.  3. 26. 22. 33. 44. 27. 40. 11. 55.],
+	 scores:[ 0.44  0.48  0.49  1.12  1.75  2.43  2.48  4.05  7.6  14.07]
+Training average loss 0.797
+Testing accuracy: 60.86%, loss: 1.093
+Attack accuracy: 0.00%
+Round  35:
+selected clients:[11, 22, 33, 44, 84, 19, 55, 75, 50, 67, 27, 99, 0, 98, 43, 73, 7, 12, 4, 38]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [44. 43. 12. 38. 84. 98.  0. 55. 73. 19.],
+	 scores:[0.06 0.11 0.13 0.14 0.24 0.28 0.29 0.32 0.34 0.38]
+The malicious clients: [50. 75.  7. 67. 22.  4. 27. 33. 11. 99.],
+	 scores:[ 0.41  0.41  0.43  0.46  1.15  1.21  1.46  2.29 10.15 17.75]
+Training average loss 0.799
+Testing accuracy: 61.51%, loss: 1.090
+Attack accuracy: 0.00%
+Round  36:
+selected clients:[11, 22, 33, 44, 57, 60, 8, 68, 24, 77, 69, 56, 87, 45, 74, 84, 17, 75, 6, 58]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [84. 58. 17. 68. 57. 60. 56. 69.  6. 87.],
+	 scores:[0.01 0.18 0.37 0.49 0.54 0.56 0.59 0.67 0.67 0.76]
+The malicious clients: [45.  8. 24. 44. 74. 75. 33. 22. 77. 11.],
+	 scores:[0.89 0.98 1.25 2.24 2.34 2.72 3.11 4.39 7.43 7.79]
+Training average loss 0.771
+Testing accuracy: 59.14%, loss: 1.130
+Attack accuracy: 0.00%
+Round  37:
+selected clients:[11, 22, 33, 44, 55, 93, 64, 57, 74, 90, 71, 60, 65, 63, 72, 86, 37, 77, 34, 23]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [64. 71. 34. 65. 72. 60. 55. 37. 63. 23.],
+	 scores:[0.2  0.3  0.31 0.31 0.32 0.38 0.4  0.52 0.53 0.56]
+The malicious clients: [86. 90. 44. 57. 74. 77. 22. 33. 11. 93.],
+	 scores:[ 0.6   0.66  0.85  1.01  1.02  1.86  2.05  5.74  6.42 13.97]
+Training average loss 0.769
+Testing accuracy: 61.06%, loss: 1.086
+Attack accuracy: 0.00%
+Round  38:
+selected clients:[11, 22, 33, 44, 28, 86, 63, 69, 51, 84, 97, 99, 0, 41, 72, 46, 95, 16, 67, 91]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [51. 72. 86. 97.  0. 84. 16. 91. 67. 63.],
+	 scores:[0.1  0.18 0.19 0.2  0.22 0.23 0.26 0.26 0.29 0.33]
+The malicious clients: [41. 46. 95. 69. 33. 22. 44. 11. 28. 99.],
+	 scores:[ 0.43  0.48  0.52  0.54  0.9   0.94  2.16  5.72  7.36 16.69]
+Training average loss 0.752
+Testing accuracy: 58.10%, loss: 1.150
+Attack accuracy: 0.00%
+Round  39:
+selected clients:[11, 22, 33, 44, 94, 75, 73, 92, 43, 32, 5, 91, 93, 87, 59, 74, 60, 70, 15, 62]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [43. 32. 44. 70. 94. 59. 73.  5. 91. 60.],
+	 scores:[0.12 0.27 0.3  0.33 0.34 0.35 0.36 0.36 0.41 0.42]
+The malicious clients: [87. 74. 62. 75. 92. 33. 22. 15. 11. 93.],
+	 scores:[ 0.42  0.47  0.5   0.85  1.56  1.87  2.32  5.86  6.95 13.94]
+Training average loss 0.795
+Testing accuracy: 61.44%, loss: 1.086
+Attack accuracy: 100.00%
+Round  40:
+selected clients:[11, 22, 33, 44, 4, 73, 68, 24, 78, 9, 72, 79, 77, 14, 87, 86, 51, 26, 99, 36]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [ 9. 24. 44. 51. 86. 68. 78. 72. 87. 79.],
+	 scores:[0.01 0.05 0.07 0.09 0.11 0.13 0.13 0.14 0.14 0.14]
+The malicious clients: [36. 14. 26. 73. 22. 33. 77.  4. 11. 99.],
+	 scores:[ 0.16  0.16  0.16  0.26  0.91  1.85  2.37  6.1   7.36 17.66]
+Training average loss 0.771
+Testing accuracy: 60.27%, loss: 1.098
+Attack accuracy: 100.00%
+Round  41:
+selected clients:[11, 22, 33, 44, 8, 21, 64, 89, 23, 91, 45, 72, 46, 10, 87, 63, 66, 53, 43, 70]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [46. 72. 23. 43. 70. 91. 21.  8. 63. 66.],
+	 scores:[0.01 0.06 0.27 0.27 0.32 0.36 0.39 0.43 0.44 0.54]
+The malicious clients: [10. 64. 45. 87. 44. 22. 53. 33. 11. 89.],
+	 scores:[ 0.68  0.69  0.76  0.9   1.21  1.6   1.97  3.06  8.92 15.13]
+Training average loss 0.770
+Testing accuracy: 62.68%, loss: 1.055
+Attack accuracy: 0.00%
+Round  42:
+selected clients:[11, 22, 33, 44, 21, 69, 51, 62, 36, 76, 59, 18, 74, 38, 5, 40, 80, 96, 4, 89]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [38.  5. 96. 59. 69. 76. 36. 51. 62. 18.],
+	 scores:[0.11 0.14 0.19 0.29 0.29 0.37 0.43 0.44 0.44 0.49]
+The malicious clients: [74. 44. 21. 40. 22. 33.  4. 89. 11. 80.],
+	 scores:[ 0.5   0.56  0.62  0.76  1.44  2.26  2.52  4.05  7.42 14.67]
+Training average loss 0.774
+Testing accuracy: 63.67%, loss: 1.034
+Attack accuracy: 0.00%
+Round  43:
+selected clients:[11, 22, 33, 44, 83, 53, 43, 40, 18, 41, 79, 70, 10, 3, 28, 19, 4, 69, 46, 32]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [32. 43. 41. 46. 69. 18. 53. 10. 83.  3.],
+	 scores:[0.02 0.32 0.5  0.57 0.68 0.69 0.7  0.71 0.73 0.74]
+The malicious clients: [19. 70. 79. 40. 33. 22.  4. 44. 28. 11.],
+	 scores:[0.75 0.77 0.98 1.32 2.18 2.6  3.02 3.08 8.79 8.85]
+Training average loss 0.738
+Testing accuracy: 61.19%, loss: 1.079
+Attack accuracy: 0.00%
+Round  44:
+selected clients:[11, 22, 33, 44, 12, 64, 74, 59, 2, 39, 62, 45, 99, 67, 73, 19, 89, 69, 97, 91]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [44. 91. 97. 39.  2. 64. 67. 12. 69. 22.],
+	 scores:[0.17 0.2  0.21 0.21 0.22 0.23 0.25 0.26 0.27 0.37]
+The malicious clients: [59. 74. 73. 45. 19. 62. 33. 11. 89. 99.],
+	 scores:[ 0.42  0.49  0.5   0.64  1.42  1.77  3.36  5.01  7.29 14.7 ]
+Training average loss 0.758
+Testing accuracy: 62.72%, loss: 1.053
+Attack accuracy: 100.00%
+Round  45:
+selected clients:[11, 22, 33, 44, 42, 57, 65, 23, 60, 77, 58, 96, 4, 63, 79, 94, 13, 87, 85, 55]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [94. 85. 55. 13. 60. 96. 58. 57. 87. 42.],
+	 scores:[0.2  0.24 0.33 0.36 0.45 0.48 0.48 0.51 0.57 0.62]
+The malicious clients: [63. 23. 65. 79. 33. 77. 11.  4. 22. 44.],
+	 scores:[0.63 0.64 0.64 1.01 2.73 2.86 5.75 5.95 6.43 7.12]
+Training average loss 0.735
+Testing accuracy: 64.30%, loss: 1.015
+Attack accuracy: 100.00%
+Round  46:
+selected clients:[11, 22, 33, 44, 77, 90, 84, 17, 75, 15, 7, 68, 21, 56, 24, 95, 48, 97, 45, 94]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [94.  7. 48. 95. 97. 56. 68. 90. 17. 75.],
+	 scores:[0.05 0.43 0.56 0.76 0.8  0.8  0.8  0.81 0.82 0.93]
+The malicious clients: [84. 24. 21. 77. 45. 22. 33. 44. 15. 11.],
+	 scores:[0.98 1.17 1.59 2.35 2.44 2.67 3.5  3.6  5.11 7.84]
+Training average loss 0.716
+Testing accuracy: 64.32%, loss: 1.022
+Attack accuracy: 100.00%
+Round  47:
+selected clients:[11, 22, 33, 44, 86, 16, 70, 47, 0, 94, 40, 91, 43, 75, 29, 18, 20, 57, 37, 60]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [43. 94. 37. 47. 60. 75. 91. 29.  0. 57.],
+	 scores:[0.14 0.21 0.42 0.53 0.63 0.68 0.69 0.7  0.77 0.77]
+The malicious clients: [86. 18. 70. 20. 33. 44. 16. 22. 40. 11.],
+	 scores:[0.86 0.96 1.17 1.46 1.82 3.99 4.61 4.94 5.15 7.5 ]
+Training average loss 0.678
+Testing accuracy: 62.49%, loss: 1.052
+Attack accuracy: 0.00%
+Round  48:
+selected clients:[11, 22, 33, 44, 1, 85, 46, 84, 13, 91, 96, 55, 89, 28, 45, 42, 19, 64, 54, 2]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [91. 55. 96.  1. 19.  2. 46. 13. 85. 64.],
+	 scores:[0.23 0.25 0.42 0.42 0.44 0.44 0.45 0.45 0.48 0.48]
+The malicious clients: [42. 84. 45. 44. 22. 33. 54. 28. 11. 89.],
+	 scores:[ 0.49  0.56  0.58  0.7   0.89  2.1   2.99  5.56  7.01 13.06]
+Training average loss 0.734
+Testing accuracy: 64.84%, loss: 0.998
+Attack accuracy: 100.00%
+Round  49:
+selected clients:[11, 22, 33, 44, 82, 58, 29, 53, 24, 41, 87, 34, 26, 56, 43, 95, 90, 39, 28, 75]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [29. 26. 82. 41. 53. 34. 43. 90. 39. 87.],
+	 scores:[0.36 0.44 0.44 0.47 0.48 0.49 0.49 0.51 0.51 0.52]
+The malicious clients: [58. 95. 75. 24. 56. 44. 33. 22. 11. 28.],
+	 scores:[ 0.62  0.69  0.99  1.62  2.04  2.35  3.3   3.8   6.24 11.65]
+Training average loss 0.668
+Testing accuracy: 63.09%, loss: 1.035
+Attack accuracy: 0.00%
+Round  50:
+selected clients:[11, 22, 33, 44, 99, 5, 57, 37, 88, 86, 28, 41, 61, 60, 76, 53, 0, 93, 65, 98]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [65. 37. 98. 61. 86.  5. 60. 57. 88. 76.],
+	 scores:[0.14 0.18 0.19 0.2  0.26 0.26 0.3  0.33 0.34 0.36]
+The malicious clients: [41.  0. 22. 44. 93. 33. 53. 28. 11. 99.],
+	 scores:[ 0.37  0.58  0.62  1.42  1.68  1.76  2.84  4.23  5.74 16.21]
+Training average loss 0.723
+Testing accuracy: 63.39%, loss: 1.031
+Attack accuracy: 0.00%
+Round  51:
+selected clients:[11, 22, 33, 44, 45, 4, 7, 58, 74, 73, 42, 56, 49, 62, 17, 98, 30, 78, 36, 95]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [74. 73. 17. 95. 58. 36. 78. 42. 45.  7.],
+	 scores:[0.03 0.09 0.28 0.31 0.42 0.44 0.45 0.46 0.47 0.47]
+The malicious clients: [62. 49. 30. 98. 44. 22. 33.  4. 11. 56.],
+	 scores:[ 0.48  0.56  0.57  0.93  1.54  2.12  3.01  5.53  6.45 13.38]
+Training average loss 0.718
+Testing accuracy: 64.02%, loss: 1.028
+Attack accuracy: 100.00%
+Round  52:
+selected clients:[11, 22, 33, 44, 36, 88, 79, 19, 21, 17, 41, 58, 14, 2, 47, 16, 66, 63, 77, 99]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [16. 66. 63. 47. 58. 14. 88.  2. 36. 17.],
+	 scores:[0.06 0.1  0.11 0.12 0.12 0.21 0.25 0.25 0.31 0.35]
+The malicious clients: [41. 77. 79. 44. 19. 21. 22. 33. 11. 99.],
+	 scores:[ 0.37  0.47  0.6   0.73  0.99  1.04  1.25  1.82 10.99 17.86]
+Training average loss 0.681
+Testing accuracy: 64.08%, loss: 1.008
+Attack accuracy: 0.00%
+Round  53:
+selected clients:[11, 22, 33, 44, 41, 14, 58, 21, 91, 88, 40, 34, 46, 30, 53, 69, 35, 73, 76, 81]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [88. 30. 46. 34. 69. 81. 14. 91. 41. 76.],
+	 scores:[0.36 0.39 0.42 0.51 0.52 0.57 0.79 0.83 0.85 0.85]
+The malicious clients: [58. 73. 53. 44. 35. 33. 40. 22. 11. 21.],
+	 scores:[0.85 0.92 1.45 1.55 1.97 2.36 3.87 3.96 7.19 7.8 ]
+Training average loss 0.691
+Testing accuracy: 63.21%, loss: 1.028
+Attack accuracy: 0.00%
+Round  54:
+selected clients:[11, 22, 33, 44, 76, 28, 63, 88, 85, 20, 56, 25, 43, 12, 13, 55, 35, 72, 41, 34]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [25. 88. 34. 63. 13. 35. 72. 12. 76. 20.],
+	 scores:[0.04 0.13 0.17 0.27 0.31 0.34 0.42 0.44 0.47 0.49]
+The malicious clients: [43. 85. 41. 55. 22. 44. 56. 33. 11. 28.],
+	 scores:[ 0.5   0.56  0.63  1.28  1.32  1.52  1.82  3.19  8.75 15.35]
+Training average loss 0.673
+Testing accuracy: 64.46%, loss: 1.005
+Attack accuracy: 0.00%
+Round  55:
+selected clients:[11, 22, 33, 44, 57, 86, 65, 95, 84, 9, 32, 41, 67, 16, 27, 62, 7, 35, 74, 39]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [16. 32. 39. 41.  7. 95. 65. 86. 67. 57.],
+	 scores:[0.21 0.38 0.58 0.59 0.6  0.63 0.73 0.76 0.79 0.79]
+The malicious clients: [74. 84. 35. 44. 22. 27. 62. 33. 11.  9.],
+	 scores:[0.84 0.94 1.02 1.74 1.99 4.12 4.22 5.23 5.73 6.11]
+Training average loss 0.680
+Testing accuracy: 65.18%, loss: 0.986
+Attack accuracy: 0.00%
+Round  56:
+selected clients:[11, 22, 33, 44, 19, 16, 13, 58, 18, 12, 84, 15, 8, 75, 9, 74, 14, 83, 81, 64]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [74. 18. 84.  8. 83. 81. 14. 16. 64. 13.],
+	 scores:[0.17 0.28 0.32 0.35 0.4  0.42 0.44 0.45 0.45 0.48]
+The malicious clients: [58. 12. 19. 22. 44.  9. 75. 33. 11. 15.],
+	 scores:[ 0.51  0.61  1.33  1.38  1.66  1.98  2.02  2.7   6.36 15.71]
+Training average loss 0.669
+Testing accuracy: 65.75%, loss: 0.985
+Attack accuracy: 0.00%
+Round  57:
+selected clients:[11, 22, 33, 44, 41, 54, 57, 92, 50, 27, 97, 62, 58, 47, 46, 17, 86, 29, 77, 20]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [46. 58. 97. 29. 86. 17. 20. 47. 50. 57.],
+	 scores:[0.19 0.25 0.26 0.31 0.31 0.32 0.32 0.33 0.42 0.56]
+The malicious clients: [41. 22. 77. 62. 27. 54. 11. 33. 44. 92.],
+	 scores:[ 0.7   0.76  0.93  1.07  1.16  1.61  2.1   2.66  8.36 15.37]
+Training average loss 0.674
+Testing accuracy: 65.52%, loss: 0.985
+Attack accuracy: 0.00%
+Round  58:
+selected clients:[11, 22, 33, 44, 5, 72, 3, 75, 47, 76, 13, 0, 1, 80, 94, 17, 2, 89, 51, 37]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [ 3. 94. 51. 13. 72. 44.  1.  5. 17.  2.],
+	 scores:[0.16 0.29 0.4  0.41 0.42 0.46 0.48 0.52 0.53 0.59]
+The malicious clients: [47. 37. 76. 75.  0. 22. 33. 11. 89. 80.],
+	 scores:[ 0.6   0.62  0.67  0.73  0.77  0.83  0.94  3.58  7.05 17.93]
+Training average loss 0.700
+Testing accuracy: 63.17%, loss: 1.022
+Attack accuracy: 100.00%
+Round  59:
+selected clients:[11, 22, 33, 44, 88, 36, 42, 99, 98, 60, 63, 1, 96, 45, 17, 93, 52, 7, 68, 40]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [88. 44. 17. 36. 45. 60. 63.  1. 42. 68.],
+	 scores:[0.16 0.21 0.3  0.32 0.34 0.35 0.37 0.38 0.38 0.43]
+The malicious clients: [22. 52. 96.  7. 93. 98. 40. 33. 11. 99.],
+	 scores:[ 0.5   0.6   0.63  0.64  1.19  2.56  3.96  5.61  6.38 12.69]
+Training average loss 0.741
+Testing accuracy: 63.86%, loss: 1.021
+Attack accuracy: 100.00%
+Round  60:
+selected clients:[11, 22, 33, 44, 76, 36, 39, 23, 60, 52, 85, 97, 0, 98, 45, 24, 5, 10, 28, 29]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [24. 23. 85. 45. 10. 97. 29. 36.  5. 39.],
+	 scores:[0.08 0.18 0.37 0.4  0.47 0.52 0.58 0.59 0.6  0.61]
+The malicious clients: [76. 60.  0. 44. 22. 52. 33. 11. 28. 98.],
+	 scores:[0.61 0.69 0.71 1.09 1.27 1.63 2.29 7.85 8.23 9.23]
+Training average loss 0.682
+Testing accuracy: 65.75%, loss: 0.971
+Attack accuracy: 100.00%
+Round  61:
+selected clients:[11, 22, 33, 44, 64, 72, 2, 7, 24, 86, 38, 42, 0, 45, 75, 5, 43, 3, 63, 6]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [38. 72. 43.  5. 86.  3.  0. 24.  6. 64.],
+	 scores:[0.16 0.2  0.21 0.3  0.45 0.49 0.62 0.65 0.66 0.67]
+The malicious clients: [63. 42.  2. 45.  7. 33. 22. 44. 11. 75.],
+	 scores:[ 0.76  0.77  0.82  1.45  1.49  1.94  3.79  4.4   6.96 11.19]
+Training average loss 0.633
+Testing accuracy: 64.81%, loss: 0.992
+Attack accuracy: 0.00%
+Round  62:
+selected clients:[11, 22, 33, 44, 69, 90, 37, 21, 85, 39, 46, 86, 20, 26, 63, 65, 49, 61, 57, 30]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [26. 46. 37. 85. 49. 86. 90. 57. 20. 69.],
+	 scores:[0.3  0.31 0.34 0.44 0.5  0.54 0.54 0.57 0.57 0.63]
+The malicious clients: [39. 63. 61. 65. 30. 22. 33. 44. 21. 11.],
+	 scores:[0.66 0.66 0.67 0.92 1.11 2.42 3.65 4.6  9.22 9.35]
+Training average loss 0.634
+Testing accuracy: 62.27%, loss: 1.058
+Attack accuracy: 0.00%
+Round  63:
+selected clients:[11, 22, 33, 44, 65, 82, 13, 37, 45, 90, 73, 25, 52, 28, 51, 87, 3, 80, 10, 40]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [90. 25. 37. 73. 45. 51. 13. 65. 87. 82.],
+	 scores:[0.03 0.16 0.16 0.37 0.51 0.55 0.57 0.67 0.68 0.68]
+The malicious clients: [10. 52.  3. 44. 40. 22. 33. 80. 11. 28.],
+	 scores:[0.7  0.82 0.92 1.57 1.59 2.57 2.73 6.97 7.28 8.48]
+Training average loss 0.684
+Testing accuracy: 65.77%, loss: 0.975
+Attack accuracy: 100.00%
+Round  64:
+selected clients:[11, 22, 33, 44, 37, 47, 30, 4, 16, 26, 69, 5, 75, 80, 54, 85, 29, 48, 43, 59]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [48. 26.  5. 37. 29. 43. 54. 69. 85. 16.],
+	 scores:[0.03 0.06 0.18 0.2  0.3  0.35 0.43 0.46 0.46 0.47]
+The malicious clients: [30. 47. 75. 59. 33.  4. 22. 44. 11. 80.],
+	 scores:[ 0.49  0.52  0.53  0.61  1.11  1.14  1.68  2.03  8.97 18.01]
+Training average loss 0.655
+Testing accuracy: 64.50%, loss: 1.011
+Attack accuracy: 0.00%
+Round  65:
+selected clients:[11, 22, 33, 44, 72, 96, 89, 84, 29, 38, 90, 31, 35, 64, 32, 67, 40, 62, 6, 85]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [96. 84. 31. 44. 64. 90.  6. 67. 38. 32.],
+	 scores:[0.13 0.18 0.29 0.31 0.31 0.35 0.36 0.43 0.44 0.47]
+The malicious clients: [85. 29. 33. 72. 35. 62. 22. 40. 11. 89.],
+	 scores:[ 0.52  0.56  0.57  0.63  0.73  2.18  2.85  4.67  7.62 14.4 ]
+Training average loss 0.658
+Testing accuracy: 65.30%, loss: 0.980
+Attack accuracy: 100.00%
+Round  66:
+selected clients:[11, 22, 33, 44, 1, 19, 70, 41, 24, 45, 47, 43, 73, 94, 86, 12, 40, 83, 37, 66]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [37. 24.  1. 86. 70. 12. 94. 73. 43. 83.],
+	 scores:[0.03 0.06 0.06 0.1  0.35 0.4  0.43 0.48 0.54 0.71]
+The malicious clients: [66. 41. 45. 47. 19. 33. 22. 44. 11. 40.],
+	 scores:[ 0.8   0.88  0.91  0.91  1.49  1.72  1.9   5.19  8.71 12.32]
+Training average loss 0.647
+Testing accuracy: 66.80%, loss: 0.945
+Attack accuracy: 0.00%
+Round  67:
+selected clients:[11, 22, 33, 44, 5, 3, 55, 82, 24, 88, 13, 59, 27, 93, 66, 58, 23, 60, 9, 91]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [ 9.  5. 23. 66. 24. 88. 82. 60. 59.  3.],
+	 scores:[0.1  0.13 0.19 0.2  0.22 0.31 0.35 0.37 0.4  0.44]
+The malicious clients: [13. 91. 58. 55. 22. 33. 44. 27. 11. 93.],
+	 scores:[ 0.47  0.57  1.09  1.48  1.5   1.8   2.37  3.16  6.7  16.15]
+Training average loss 0.655
+Testing accuracy: 65.95%, loss: 0.966
+Attack accuracy: 0.00%
+Round  68:
+selected clients:[11, 22, 33, 44, 1, 92, 75, 23, 78, 81, 26, 20, 45, 97, 40, 32, 77, 56, 43, 89]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [77. 97.  1. 32. 78. 20. 81. 23. 43. 45.],
+	 scores:[0.17 0.19 0.22 0.28 0.29 0.29 0.29 0.31 0.36 0.37]
+The malicious clients: [56. 26. 44. 22. 75. 33. 89. 40. 11. 92.],
+	 scores:[ 0.42  0.44  0.47  0.85  2.37  2.46  3.6   4.28  7.32 13.  ]
+Training average loss 0.654
+Testing accuracy: 64.79%, loss: 0.994
+Attack accuracy: 0.00%
+Round  69:
+selected clients:[11, 22, 33, 44, 29, 64, 37, 42, 40, 32, 93, 72, 36, 34, 67, 19, 96, 13, 0, 65]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [96. 42. 37. 13. 65. 72.  0. 44. 36. 34.],
+	 scores:[0.03 0.1  0.17 0.21 0.21 0.22 0.25 0.26 0.27 0.28]
+The malicious clients: [67. 64. 32. 29. 22. 19. 40. 33. 11. 93.],
+	 scores:[ 0.3   0.37  0.39  0.42  0.75  1.84  3.03  3.42  8.65 16.83]
+Training average loss 0.631
+Testing accuracy: 64.99%, loss: 0.981
+Attack accuracy: 100.00%
+Round  70:
+selected clients:[11, 22, 33, 44, 39, 76, 57, 27, 29, 84, 90, 12, 25, 73, 21, 31, 6, 64, 66, 98]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [31. 25. 90. 73. 84.  6. 12. 66. 57. 39.],
+	 scores:[0.03 0.04 0.18 0.29 0.48 0.53 0.7  0.74 0.76 0.98]
+The malicious clients: [29. 76. 64. 33. 98. 44. 22. 21. 11. 27.],
+	 scores:[ 1.02  1.04  1.08  1.16  2.04  2.07  2.27  2.75  8.78 11.07]
+Training average loss 0.622
+Testing accuracy: 64.95%, loss: 0.988
+Attack accuracy: 0.00%
+Round  71:
+selected clients:[11, 22, 33, 44, 18, 19, 48, 93, 26, 6, 24, 82, 59, 83, 53, 36, 42, 75, 17, 68]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [18. 36.  6. 68. 24. 82. 26. 83. 42. 17.],
+	 scores:[0.22 0.22 0.29 0.3  0.32 0.34 0.35 0.35 0.36 0.4 ]
+The malicious clients: [22. 19. 59. 44. 48. 53. 75. 33. 11. 93.],
+	 scores:[ 0.56  0.97  1.05  1.21  1.49  1.82  3.05  3.97  5.7  15.03]
+Training average loss 0.650
+Testing accuracy: 66.28%, loss: 0.955
+Attack accuracy: 0.00%
+Round  72:
+selected clients:[11, 22, 33, 44, 32, 7, 63, 74, 3, 95, 5, 18, 29, 42, 94, 37, 2, 78, 54, 34]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [ 5. 37. 63. 34. 74. 18. 94.  7.  2.  3.],
+	 scores:[0.09 0.18 0.24 0.28 0.39 0.45 0.63 0.69 0.69 0.78]
+The malicious clients: [32. 95. 29. 42. 78. 22. 33. 44. 11. 54.],
+	 scores:[ 0.87  0.9   1.01  1.02  1.71  2.17  4.03  4.15  7.46 10.25]
+Training average loss 0.572
+Testing accuracy: 65.78%, loss: 0.965
+Attack accuracy: 0.00%
+Round  73:
+selected clients:[11, 22, 33, 44, 54, 43, 19, 35, 77, 0, 68, 47, 88, 58, 32, 53, 13, 83, 97, 52]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [58. 33. 19. 32. 22. 88. 43. 97. 47. 13.],
+	 scores:[0.06 0.16 0.28 0.33 0.37 0.43 0.46 0.49 0.55 0.55]
+The malicious clients: [83.  0. 68. 53. 54. 35. 11. 77. 52. 44.],
+	 scores:[ 0.56  0.57  0.6   0.7   0.91  0.99  3.43  3.82  8.49 14.26]
+Training average loss 0.617
+Testing accuracy: 65.91%, loss: 0.962
+Attack accuracy: 100.00%
+Round  74:
+selected clients:[11, 22, 33, 44, 27, 21, 70, 36, 13, 72, 63, 80, 4, 1, 66, 14, 54, 64, 76, 69]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [21. 66. 70. 72. 63.  1. 36. 27. 76. 14.],
+	 scores:[0.03 0.09 0.13 0.17 0.18 0.37 0.62 0.65 0.69 0.69]
+The malicious clients: [13. 64. 69. 54.  4. 44. 33. 22. 11. 80.],
+	 scores:[ 0.74  0.75  0.79  1.08  1.11  1.17  1.69  2.29  7.93 16.81]
+Training average loss 0.629
+Testing accuracy: 66.92%, loss: 0.935
+Attack accuracy: 100.00%
+Round  75:
+selected clients:[11, 22, 33, 44, 95, 54, 86, 48, 97, 26, 18, 24, 65, 25, 36, 7, 47, 20, 84, 91]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [25. 84. 36. 86. 97. 65.  7. 26. 18. 47.],
+	 scores:[0.04 0.26 0.33 0.36 0.51 0.56 0.64 0.66 0.67 0.67]
+The malicious clients: [95. 20. 24. 91. 44. 48. 33. 54. 22. 11.],
+	 scores:[ 0.68  0.68  0.7   0.75  1.94  2.97  3.08  5.6   6.58 10.32]
+Training average loss 0.577
+Testing accuracy: 66.68%, loss: 0.946
+Attack accuracy: 100.00%
+Round  76:
+selected clients:[11, 22, 33, 44, 76, 61, 56, 78, 42, 37, 96, 28, 94, 21, 59, 41, 86, 50, 16, 99]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [86. 50. 37. 94. 59. 76. 96. 78. 61. 21.],
+	 scores:[0.06 0.07 0.1  0.11 0.12 0.27 0.3  0.33 0.38 0.39]
+The malicious clients: [41. 42. 16. 28. 33. 44. 22. 56. 11. 99.],
+	 scores:[ 0.41  0.41  0.43  0.81  1.16  2.    2.65  2.74  7.54 17.69]
+Training average loss 0.626
+Testing accuracy: 66.37%, loss: 0.946
+Attack accuracy: 100.00%
+Round  77:
+selected clients:[11, 22, 33, 44, 70, 49, 0, 20, 89, 13, 3, 14, 94, 18, 85, 29, 81, 66, 36, 79]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [94. 85. 36. 81. 66. 13. 29. 20.  3. 44.],
+	 scores:[0.02 0.14 0.16 0.2  0.26 0.29 0.36 0.42 0.43 0.54]
+The malicious clients: [14.  0. 18. 79. 22. 33. 70. 49. 11. 89.],
+	 scores:[ 0.54  0.81  0.82  1.11  1.58  1.62  2.66  4.21  5.22 16.62]
+Training average loss 0.586
+Testing accuracy: 66.57%, loss: 0.938
+Attack accuracy: 100.00%
+Round  78:
+selected clients:[11, 22, 33, 44, 35, 79, 83, 84, 20, 37, 86, 45, 28, 67, 61, 70, 78, 48, 73, 27]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [84. 70. 45. 48. 86. 78. 33. 37. 61. 20.],
+	 scores:[0.16 0.27 0.3  0.34 0.35 0.43 0.54 0.55 0.59 0.78]
+The malicious clients: [73. 83. 67. 79. 35. 22. 27. 44. 11. 28.],
+	 scores:[ 0.8   0.86  0.89  1.03  1.26  2.42  4.11  5.04  5.5  11.8 ]
+Training average loss 0.602
+Testing accuracy: 66.69%, loss: 0.942
+Attack accuracy: 100.00%
+Round  79:
+selected clients:[11, 22, 33, 44, 56, 96, 54, 83, 37, 26, 85, 97, 53, 64, 9, 94, 45, 42, 80, 4]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [94. 37. 54. 26. 97. 96.  4.  9. 44. 64.],
+	 scores:[0.08 0.13 0.18 0.26 0.28 0.37 0.38 0.68 0.73 0.74]
+The malicious clients: [42. 45. 83. 85. 33. 22. 53. 56. 11. 80.],
+	 scores:[ 0.78  0.79  0.79  0.83  0.98  1.01  1.12  3.12  6.74 18.  ]
+Training average loss 0.612
+Testing accuracy: 67.15%, loss: 0.929
+Attack accuracy: 100.00%
+Round  80:
+selected clients:[11, 22, 33, 44, 19, 32, 1, 29, 47, 81, 12, 80, 16, 83, 31, 72, 73, 92, 70, 65]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [31. 72. 32. 73. 70. 29. 16. 33.  1. 81.],
+	 scores:[0.06 0.14 0.15 0.25 0.27 0.3  0.32 0.36 0.43 0.44]
+The malicious clients: [12. 47. 83. 22. 65. 19. 11. 44. 92. 80.],
+	 scores:[ 0.46  0.48  0.48  0.49  0.49  0.95  2.5   3.92  8.31 17.2 ]
+Training average loss 0.613
+Testing accuracy: 67.08%, loss: 0.925
+Attack accuracy: 100.00%
+Round  81:
+selected clients:[11, 22, 33, 44, 58, 38, 78, 48, 24, 18, 97, 86, 80, 30, 15, 47, 10, 71, 66, 95]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [86. 97. 66. 38. 24. 58. 15. 95. 47. 10.],
+	 scores:[0.1  0.12 0.12 0.12 0.26 0.32 0.35 0.45 0.47 0.55]
+The malicious clients: [18. 78. 71. 22. 48. 30. 44. 33. 11. 80.],
+	 scores:[ 0.55  0.56  0.61  0.9   1.16  1.75  2.48  2.77  6.85 17.51]
+Training average loss 0.585
+Testing accuracy: 66.80%, loss: 0.941
+Attack accuracy: 100.00%
+Round  82:
+selected clients:[11, 22, 33, 44, 63, 45, 61, 69, 84, 57, 91, 21, 13, 23, 37, 68, 90, 79, 85, 93]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [63. 37. 44. 68. 45. 84. 90. 91. 57. 85.],
+	 scores:[0.09 0.13 0.16 0.19 0.24 0.26 0.26 0.32 0.39 0.46]
+The malicious clients: [69. 61. 23. 13. 79. 22. 33. 21. 11. 93.],
+	 scores:[ 0.54  0.55  0.57  0.67  0.82  0.91  2.16  4.82  8.18 16.27]
+Training average loss 0.589
+Testing accuracy: 66.82%, loss: 0.939
+Attack accuracy: 100.00%
+Round  83:
+selected clients:[11, 22, 33, 44, 69, 78, 45, 64, 75, 17, 30, 82, 31, 95, 41, 16, 29, 39, 53, 34]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [16. 34. 69. 64. 39. 78. 31. 95. 30. 17.],
+	 scores:[0.15 0.17 0.33 0.36 0.4  0.42 0.44 0.46 0.53 0.53]
+The malicious clients: [82. 41. 45. 29. 75. 33. 22. 53. 11. 44.],
+	 scores:[ 0.57  0.57  0.57  0.62  1.83  2.11  2.46  4.6   8.31 12.57]
+Training average loss 0.567
+Testing accuracy: 66.36%, loss: 0.957
+Attack accuracy: 100.00%
+Round  84:
+selected clients:[11, 22, 33, 44, 46, 10, 40, 81, 78, 41, 43, 26, 62, 77, 86, 15, 94, 50, 35, 0]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [86. 50. 94. 26. 46. 35.  0. 81. 78. 43.],
+	 scores:[0.17 0.17 0.2  0.3  0.5  0.62 0.73 0.81 0.82 0.83]
+The malicious clients: [10. 41. 33. 77. 62. 40. 22. 44. 11. 15.],
+	 scores:[ 0.87  0.9   1.13  1.3   1.38  1.41  2.38  3.46  5.95 14.08]
+Training average loss 0.592
+Testing accuracy: 66.13%, loss: 0.957
+Attack accuracy: 100.00%
+Round  85:
+selected clients:[11, 22, 33, 44, 74, 65, 29, 46, 66, 86, 39, 30, 2, 21, 47, 88, 26, 57, 15, 80]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [74. 86. 26. 66. 65. 21. 46. 88. 29. 47.],
+	 scores:[0.   0.05 0.1  0.18 0.28 0.3  0.34 0.48 0.52 0.61]
+The malicious clients: [57. 39. 44. 33. 30. 22.  2. 80. 11. 15.],
+	 scores:[ 0.65  0.66  0.78  1.33  1.36  1.49  1.52  3.3   6.66 17.38]
+Training average loss 0.560
+Testing accuracy: 66.48%, loss: 0.953
+Attack accuracy: 100.00%
+Round  86:
+selected clients:[11, 22, 33, 44, 24, 74, 13, 73, 59, 17, 3, 20, 65, 68, 79, 90, 98, 15, 28, 94]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [94. 74. 90. 73. 59. 24. 17. 68. 13. 65.],
+	 scores:[0.09 0.2  0.21 0.22 0.36 0.41 0.55 0.64 0.7  0.75]
+The malicious clients: [20.  3. 22. 44. 33. 79. 28. 98. 11. 15.],
+	 scores:[ 0.75  0.76  0.98  1.82  2.06  2.22  3.58  4.41  5.74 11.57]
+Training average loss 0.597
+Testing accuracy: 67.73%, loss: 0.921
+Attack accuracy: 100.00%
+Round  87:
+selected clients:[11, 22, 33, 44, 47, 18, 2, 98, 79, 35, 72, 91, 88, 70, 76, 34, 9, 36, 65, 25]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [25. 88. 34. 72. 98. 35. 70. 18. 36.  2.],
+	 scores:[0.1  0.12 0.32 0.43 0.49 0.51 0.52 0.57 0.76 0.76]
+The malicious clients: [76. 47. 65. 91. 22. 33. 11. 44. 79.  9.],
+	 scores:[ 0.79  0.79  0.85  0.86  1.04  1.27  4.12  4.63  6.75 12.32]
+Training average loss 0.566
+Testing accuracy: 67.07%, loss: 0.932
+Attack accuracy: 100.00%
+Round  88:
+selected clients:[11, 22, 33, 44, 26, 3, 10, 82, 93, 48, 60, 76, 66, 16, 53, 56, 29, 91, 65, 99]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [44. 48. 22. 66. 29. 10. 16. 53. 33. 26.],
+	 scores:[0.01 0.08 0.15 0.16 0.21 0.22 0.23 0.24 0.27 0.3 ]
+The malicious clients: [76. 82. 91. 60. 65.  3. 11. 93. 99. 56.],
+	 scores:[ 0.32  0.32  0.33  0.34  0.34  0.34  0.53  7.75  9.18 16.66]
+Training average loss 0.585
+Testing accuracy: 67.18%, loss: 0.928
+Attack accuracy: 100.00%
+Round  89:
+selected clients:[11, 22, 33, 44, 96, 57, 72, 73, 2, 65, 21, 85, 86, 15, 97, 48, 88, 83, 87, 1]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [ 1. 86. 48. 88. 87. 72. 96. 97. 83. 73.],
+	 scores:[0.31 0.34 0.37 0.4  0.43 0.45 0.5  0.52 0.58 0.62]
+The malicious clients: [65. 85. 57.  2. 22. 33. 44. 21. 15. 11.],
+	 scores:[ 0.63  0.63  0.78  0.8   1.91  2.78  3.54  3.61  7.02 11.78]
+Training average loss 0.528
+Testing accuracy: 67.05%, loss: 0.926
+Attack accuracy: 100.00%
+Round  90:
+selected clients:[11, 22, 33, 44, 86, 5, 17, 16, 31, 36, 53, 47, 1, 66, 24, 94, 49, 32, 46, 54]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [24. 86. 66. 16.  1. 32. 36. 94. 47. 17.],
+	 scores:[0.03 0.49 0.87 1.03 1.05 1.1  1.13 1.2  1.22 1.23]
+The malicious clients: [ 5. 31. 33. 46. 22. 44. 53. 54. 49. 11.],
+	 scores:[1.23 1.28 1.35 1.36 2.05 2.06 2.9  4.25 4.33 7.84]
+Training average loss 0.528
+Testing accuracy: 68.11%, loss: 0.917
+Attack accuracy: 100.00%
+Round  91:
+selected clients:[11, 22, 33, 44, 68, 75, 57, 77, 55, 24, 65, 94, 5, 2, 50, 39, 36, 81, 7, 48]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [36.  7.  5. 94. 24. 57. 48. 68. 81. 65.],
+	 scores:[0.1  0.2  0.36 0.53 0.77 0.86 0.89 0.95 0.99 0.99]
+The malicious clients: [39.  2. 22. 75. 50. 33. 44. 55. 11. 77.],
+	 scores:[1.01 1.05 1.32 1.43 1.49 2.16 2.36 3.96 7.94 8.63]
+Training average loss 0.558
+Testing accuracy: 67.97%, loss: 0.916
+Attack accuracy: 100.00%
+Round  92:
+selected clients:[11, 22, 33, 44, 65, 43, 94, 64, 23, 63, 15, 47, 1, 27, 5, 48, 70, 67, 19, 37]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [37.  5. 94. 23. 70. 63.  1. 47. 48. 64.],
+	 scores:[0.12 0.16 0.2  0.2  0.28 0.38 0.49 0.58 0.62 0.62]
+The malicious clients: [43. 65. 22. 27. 67. 33. 19. 44. 11. 15.],
+	 scores:[ 0.65  0.77  0.92  0.92  0.99  2.09  2.2   3.12  7.24 15.45]
+Training average loss 0.537
+Testing accuracy: 67.43%, loss: 0.925
+Attack accuracy: 100.00%
+Round  93:
+selected clients:[11, 22, 33, 44, 87, 96, 81, 17, 82, 97, 42, 63, 79, 51, 4, 48, 9, 30, 69, 37]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [51. 37. 44. 42. 96. 63. 79. 82. 97. 81.],
+	 scores:[0.22 0.33 0.52 0.59 0.61 0.76 0.8  0.81 0.82 0.84]
+The malicious clients: [87. 17. 69. 48.  9. 22. 33. 30.  4. 11.],
+	 scores:[0.85 0.85 0.97 1.01 1.26 2.61 2.65 4.99 7.62 8.88]
+Training average loss 0.558
+Testing accuracy: 67.11%, loss: 0.934
+Attack accuracy: 100.00%
+Round  94:
+selected clients:[11, 22, 33, 44, 89, 56, 58, 51, 79, 35, 74, 9, 71, 76, 27, 42, 86, 26, 46, 31]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [86. 26.  9. 44. 46. 79. 51. 71. 31. 58.],
+	 scores:[0.07 0.16 0.17 0.22 0.27 0.34 0.35 0.39 0.43 0.65]
+The malicious clients: [35. 74. 56. 76. 42. 22. 33. 27. 11. 89.],
+	 scores:[ 0.66  0.68  0.8   0.87  1.15  1.63  2.43  4.81  6.23 15.69]
+Training average loss 0.575
+Testing accuracy: 66.96%, loss: 0.927
+Attack accuracy: 100.00%
+Round  95:
+selected clients:[11, 22, 33, 44, 93, 19, 67, 71, 42, 60, 87, 25, 96, 77, 83, 31, 7, 99, 86, 66]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [86. 44. 66. 83. 60. 31. 25. 67. 42.  7.],
+	 scores:[0.06 0.14 0.19 0.21 0.21 0.22 0.24 0.26 0.26 0.34]
+The malicious clients: [87. 96. 71. 22. 19. 33. 77. 93. 11. 99.],
+	 scores:[ 0.36  0.45  0.47  1.12  1.76  1.83  2.52  2.78  7.83 16.74]
+Training average loss 0.583
+Testing accuracy: 66.97%, loss: 0.939
+Attack accuracy: 100.00%
+Round  96:
+selected clients:[11, 22, 33, 44, 93, 9, 91, 70, 14, 60, 35, 13, 36, 2, 51, 46, 98, 54, 5, 77]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [ 9.  5. 77. 36. 35. 60. 46. 13. 51. 14.],
+	 scores:[0.03 0.06 0.25 0.34 0.38 0.42 0.52 0.54 0.58 0.62]
+The malicious clients: [91. 70. 44. 22.  2. 54. 33. 11. 93. 98.],
+	 scores:[ 0.64  0.64  0.9   0.93  1.02  1.44  2.42  6.86  9.23 10.16]
+Training average loss 0.580
+Testing accuracy: 68.07%, loss: 0.908
+Attack accuracy: 100.00%
+Round  97:
+selected clients:[11, 22, 33, 44, 1, 62, 93, 10, 35, 14, 38, 42, 48, 88, 46, 67, 83, 89, 17, 81]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [88. 35. 38. 10. 17. 46. 14.  1. 81. 83.],
+	 scores:[0.07 0.14 0.19 0.31 0.33 0.34 0.41 0.41 0.47 0.51]
+The malicious clients: [42. 67. 22. 62. 33. 48. 44. 11. 93. 89.],
+	 scores:[ 0.55  0.64  0.97  1.47  1.62  1.7   2.12  4.96  5.12 15.67]
+Training average loss 0.578
+Testing accuracy: 67.80%, loss: 0.911
+Attack accuracy: 100.00%
+Round  98:
+selected clients:[11, 22, 33, 44, 18, 38, 2, 78, 86, 56, 74, 37, 91, 80, 77, 48, 62, 50, 34, 63]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [86. 37. 38. 74. 33. 62. 56. 18. 34.  2.],
+	 scores:[0.07 0.09 0.22 0.34 0.48 0.48 0.52 0.53 0.76 0.84]
+The malicious clients: [91. 77. 78. 63. 22. 48. 50. 44. 11. 80.],
+	 scores:[ 0.93  0.97  1.01  1.01  1.03  1.2   1.27  3.4   5.92 16.95]
+Training average loss 0.534
+Testing accuracy: 66.27%, loss: 0.937
+Attack accuracy: 100.00%
+Round  99:
+selected clients:[11, 22, 33, 44, 20, 31, 6, 25, 89, 85, 70, 79, 72, 63, 32, 82, 47, 5, 3, 36]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+The benign clients: [72.  5. 32.  6. 63. 70.  3. 47. 25. 36.],
+	 scores:[0.06 0.12 0.16 0.17 0.17 0.18 0.36 0.39 0.44 0.44]
+The malicious clients: [20. 85. 22. 44. 31. 82. 33. 79. 11. 89.],
+	 scores:[ 0.48  0.64  0.7   0.84  0.89  0.98  1.59  1.87 10.   17.53]
+Training average loss 0.546
+Testing accuracy: 68.25%, loss: 0.905
+Attack accuracy: 100.00%

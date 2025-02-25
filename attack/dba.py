@@ -75,6 +75,7 @@ class DBA:
                  stealth_rate: int,
                  poison_label_swap: int,
                  trigger: dict,
+                 adversary_list: list,
                  device,
                  **kwargs
                  ):
@@ -87,9 +88,11 @@ class DBA:
         self.poisoning_per_batch = poisoning_per_batch
         self.stealth_rate = stealth_rate
         self.poison_label_swap = poison_label_swap
+        self.adversary_list = adversary_list
         self.test_data_idxes = None
 
     def exec(self, dataset: Dataset, data_idxes, model: nn.Module, adversarial_index):
+        adversarial_index = self.adversary_list.index(adversarial_index)
 
         # copy the global model in the last round
         global_model = dict()
@@ -116,7 +119,6 @@ class DBA:
                 for i in range(self.poisoning_per_batch):
                     if i == len(images):
                         break
-                    images[i] = self.poison_label_swap
                     images[i] = add_pixel_pattern(images[i], adversarial_index, self.trigger_args)
                     labels[i] = self.poison_label_swap
                 images = images.to(self.device)
@@ -156,14 +158,13 @@ class DBA:
             batch_loss = []
             correct = 0
             # load poisoning test data
-            data_size = self.batch_size * 2
+            data_size = self.batch_size * 10
             ldr_test = DataLoader(DatasetSplit(dataset, idxes=test_data_idxes),
                                   batch_size=self.batch_size)
             for batch_idx, (images, labels) in enumerate(ldr_test):
-                if batch_idx == 2:
+                if batch_idx == 10:
                     break
                 for i in range(len(images)):
-                    images[i] = self.poison_label_swap
                     images[i] = add_pixel_pattern(images[i], -1, self.trigger_args)
                     labels[i] = self.poison_label_swap
                 images, labels = images.to(self.device), labels.to(self.device)

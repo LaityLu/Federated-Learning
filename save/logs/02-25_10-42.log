@@ -1,0 +1,187 @@
+save time:02-25_10-42
+Round   0:
+selected clients:[31, 9, 95, 92, 50, 18, 62, 87, 20, 69]
+cluster labels: [-1  0 -1  0  0 -1  0  0  0 -1]
+The benign clients: [9, 92, 50, 62, 87, 20]
+The malicious clients: [31, 95, 18, 69]
+Training average loss 1.693
+Testing accuracy: 18.91%, loss: 2.226
+Attack accuracy: 0.00%
+Round   1:
+selected clients:[11, 22, 33, 44, 32, 84, 48, 61, 37, 26]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0 -1 -1  0 -1  0 -1]
+The benign clients: [11, 22, 33, 44, 48, 37]
+The malicious clients: [32, 84, 61, 26]
+Training average loss 1.568
+Testing accuracy: 25.35%, loss: 2.102
+Attack accuracy: 100.00%
+Round   2:
+selected clients:[11, 22, 33, 44, 5, 53, 23, 65, 92, 68]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0  0 -1  0 -1 -1 -1]
+The benign clients: [11, 22, 33, 44, 5, 23]
+The malicious clients: [53, 65, 92, 68]
+Training average loss 1.448
+Testing accuracy: 21.53%, loss: 2.007
+Attack accuracy: 100.00%
+Round   3:
+selected clients:[11, 22, 33, 44, 1, 89, 3, 24, 86, 31]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0 -1 -1 -1 -1  0  0]
+The benign clients: [11, 22, 33, 44, 86, 31]
+The malicious clients: [1, 89, 3, 24]
+Training average loss 1.344
+Testing accuracy: 35.40%, loss: 1.834
+Attack accuracy: 100.00%
+Round   4:
+selected clients:[11, 22, 33, 44, 39, 63, 51, 92, 2, 96]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0  0 -1 -1 -1  0 -1]
+The benign clients: [11, 22, 33, 44, 39, 2]
+The malicious clients: [63, 51, 92, 96]
+Training average loss 1.386
+Testing accuracy: 37.90%, loss: 1.747
+Attack accuracy: 100.00%
+Round   5:
+selected clients:[11, 22, 33, 44, 47, 58, 31, 85, 95, 57]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0 -1  0  0 -1 -1  0]
+The benign clients: [11, 22, 33, 44, 58, 31, 57]
+The malicious clients: [47, 85, 95]
+Training average loss 1.224
+Testing accuracy: 38.33%, loss: 1.700
+Attack accuracy: 100.00%
+Round   6:
+selected clients:[11, 22, 33, 44, 14, 64, 53, 97, 93, 42]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0  0 -1 -1  0 -1 -1]
+The benign clients: [11, 22, 33, 44, 14, 97]
+The malicious clients: [64, 53, 93, 42]
+Training average loss 1.231
+Testing accuracy: 40.20%, loss: 1.658
+Attack accuracy: 100.00%
+Round   7:
+selected clients:[11, 22, 33, 44, 38, 82, 46, 8, 35, 21]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0 -1  0 -1 -1 -1  0]
+The benign clients: [11, 22, 33, 44, 82, 21]
+The malicious clients: [38, 46, 8, 35]
+Training average loss 1.178
+Testing accuracy: 40.17%, loss: 1.637
+Attack accuracy: 100.00%
+Round   8:
+selected clients:[11, 22, 33, 44, 39, 83, 45, 8, 90, 60]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0  0  0 -1 -1 -1 -1]
+The benign clients: [11, 22, 33, 44, 39, 83]
+The malicious clients: [45, 8, 90, 60]
+Training average loss 1.178
+Testing accuracy: 42.04%, loss: 1.602
+Attack accuracy: 100.00%
+Round   9:
+selected clients:[11, 22, 33, 44, 38, 37, 69, 26, 73, 87]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0 -1  0 -1 -1 -1  0]
+The benign clients: [11, 22, 33, 44, 37, 87]
+The malicious clients: [38, 69, 26, 73]
+Training average loss 1.189
+Testing accuracy: 44.77%, loss: 1.554
+Attack accuracy: 100.00%
+Round  10:
+selected clients:[11, 22, 33, 44, 65, 74, 24, 84, 39, 18]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0 -1 -1  0 -1 -1  0]
+The benign clients: [11, 22, 33, 44, 24, 18]
+The malicious clients: [65, 74, 84, 39]
+Training average loss 1.139
+Testing accuracy: 44.24%, loss: 1.553
+Attack accuracy: 100.00%
+Round  11:
+selected clients:[11, 22, 33, 44, 50, 41, 64, 7, 79, 81]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0  0 -1 -1 -1  0 -1]
+The benign clients: [11, 22, 33, 44, 50, 79]
+The malicious clients: [41, 64, 7, 81]
+Training average loss 1.105
+Testing accuracy: 45.62%, loss: 1.503
+Attack accuracy: 100.00%
+Round  12:
+selected clients:[11, 22, 33, 44, 32, 17, 70, 36, 74, 15]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0 -1  0 -1 -1 -1  0]
+The benign clients: [11, 22, 33, 44, 17, 15]
+The malicious clients: [32, 70, 36, 74]
+Training average loss 1.073
+Testing accuracy: 45.88%, loss: 1.487
+Attack accuracy: 100.00%
+Round  13:
+selected clients:[11, 22, 33, 44, 75, 86, 17, 6, 65, 61]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0 -1  0  0 -1 -1 -1]
+The benign clients: [11, 22, 33, 44, 86, 17]
+The malicious clients: [75, 6, 65, 61]
+Training average loss 1.063
+Testing accuracy: 44.30%, loss: 1.509
+Attack accuracy: 100.00%
+Round  14:
+selected clients:[11, 22, 33, 44, 25, 32, 36, 13, 43, 52]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0  0 -1  0 -1 -1 -1]
+The benign clients: [11, 22, 33, 44, 25, 36]
+The malicious clients: [32, 13, 43, 52]
+Training average loss 1.052
+Testing accuracy: 44.42%, loss: 1.511
+Attack accuracy: 100.00%
+Round  15:
+selected clients:[11, 22, 33, 44, 89, 45, 31, 94, 97, 57]
+malicious client:11
+malicious client:22
+malicious client:33
+malicious client:44
+cluster labels: [ 0  0  0  0  0  0  0 -1 -1 -1]
+The benign clients: [11, 22, 33, 44, 89, 45, 31]
+The malicious clients: [94, 97, 57]
+Training average loss 0.975

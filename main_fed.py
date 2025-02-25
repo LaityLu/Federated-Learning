@@ -1,5 +1,7 @@
 import argparse
 import copy
+import random
+
 import numpy as np
 import torch
 import yaml
@@ -17,7 +19,7 @@ from utils.logger_config import logger, formatted_time
 if __name__ == '__main__':
     # parse args
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', type=str, default='./config/semantic_flame.yaml',
+    parser.add_argument('--config', type=str, default='./config/dba_multimetrics.yaml',
                         help='the path of config file')
     args = parser.parse_args()
     # load the config file
@@ -47,6 +49,7 @@ if __name__ == '__main__':
     if config['FL']['is_attack']:
         # malicious trainer
         attacker = getattr(attack, config['Attack']['name'])(**config['Attack']['args'],
+                                                             adversary_list=config['Attack']['adversary_list'],
                                                              poison_images=config['Attack']['poison_images'],
                                                              device=device)
         # normal trainer
@@ -73,7 +76,12 @@ if __name__ == '__main__':
         select_clients = np.random.choice(benign_client_idxes, num_select_clients, replace=False).tolist()
         if config['FL']['is_attack'] and rd in config['Attack']['attack_round']:
             # replace the benign clients with malicious clients
-            for i, adv_idxes in enumerate(config['Attack']['adversary_list']):
+            if config['Attack']['name'] == 'SemanticAttack':
+                select_adv = config['Attack']['adversary_list']
+            else:
+                # DBA
+                select_adv = random.sample(config['Attack']['adversary_list'], 2)
+            for i, adv_idxes in enumerate(select_adv):
                 select_clients[i] = adv_idxes
         num_dps = [list_num_dps[i] for i in select_clients]
         # begin training
@@ -88,7 +96,7 @@ if __name__ == '__main__':
             if config['FL']['is_attack'] and rd in config['Attack']['attack_round'] and idxes in config['Attack']['adversary_list']:
                 logger.info('malicious client:{}'.format(idxes))
                 local_model, local_loss = attacker.exec(dataset_train, dict_clients[idxes],
-                                                        copy.deepcopy(global_model), adversarial_index=i)
+                                                        copy.deepcopy(global_model), adversarial_index=idxes)
                 have_attack = True
             # normal model training
             else:
@@ -117,16 +125,17 @@ if __name__ == '__main__':
         # train_accuracy, train_loss = local_trainer.eval(dataset_train, global_model)
         # print("Training accuracy: {:.2f}%, loss: {:.3f}".format(train_accuracy, train_loss))
         # logger.info("Training accuracy: {:.2f}%, loss: {:.3f}".format(train_accuracy, train_loss))
-
+        # main accuracy
         test_accuracy, test_loss = local_trainer.eval(dataset_test, global_model)
         print("Testing accuracy: {:.2f}%, loss: {:.3f}".format(test_accuracy, test_loss))
         logger.info("Testing accuracy: {:.2f}%, loss: {:.3f}".format(test_accuracy, test_loss))
-
+        # backdoor accuracy
         if config['FL']['is_attack']:
             # and rd >= config['Attack']['attack_round'][0]
             if config['Attack']['name'] == 'SemanticAttack':
                 test_attack_accuracy, _ = attacker.eval(dataset_train, global_model)
             else:
+                # DBA
                 test_attack_accuracy, _ = attacker.eval(dataset_test, global_model)
             print("Attack accuracy: {:.2f}%".format(test_attack_accuracy))
             logger.info("Attack accuracy: {:.2f}%".format(test_attack_accuracy))

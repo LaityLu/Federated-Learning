@@ -2,7 +2,7 @@ gpu: 0
 
 # Federated arguments
 FL:
-  round: 100
+  round: 10
   num_clients: 100
   frac: 0.1
   test_batch_size: 128
@@ -55,7 +55,7 @@ Defense:
 Attack:
   name: SemanticAttack
   adversary_list: [1]
-  attack_round: [14]
+  attack_round: [1]
   poison_images:
     poison_label_swap: 2
     ## cars with vertically striped walls in the background: 7 + 5 = 12

@@ -9,6 +9,9 @@ class MultiMetrics:
 
     def __init__(self, top_k: float):
         self.top_k = top_k
+        self.round = 0
+        self.FNR = 0
+        self.FPR = 0
 
     def exec(self, global_model, client_models, client_idxes, num_dps, aggregator_name):
         # flatten the model into a one-dimensional tensor
@@ -50,9 +53,10 @@ class MultiMetrics:
 
         # combine into a matrix
         tri_distance0 = np.vstack([cos_dd, mht_dd, euc_dd]).T
-        # visual_pca_whitening(tri_distance0, client_idxes)
+        # visual_pca_whitening(tri_distance0, client_idxes, self.round)
+        # self.round += 1
         tri_distance = tri_distance0 - tri_distance0.mean(axis=0)
-
+        # tri_distance = tri_distance0
         # logger.info('metrics:{}'.format(tri_distance))
         # logger.info('metrics sort:{}'.format(np.argsort(tri_distance, axis=0)))
 
@@ -83,10 +87,14 @@ class MultiMetrics:
         # store the idxes and scores of benign clients and malicious clients
         benign_clients = [client_idxes[ti] for ti in top_k_ind]
         bgn_scores = [scores[i].round(2) for i in top_k_ind]
+        bgn = np.vstack((benign_clients, bgn_scores))
+        bgn = bgn[:, bgn[1, :].argsort()]
         adv_clients = [client_idxes[ti] for ti in other_ind]
         adv_scores = [scores[i].round(2) for i in other_ind]
-        logger.info("The benign clients: {},\n\t scores:{}".format(benign_clients, bgn_scores))
-        logger.info("The malicious clients: {},\n\t scores:{}".format(adv_clients, adv_scores))
+        adv = np.vstack((adv_clients, adv_scores))
+        adv = adv[:, adv[1, :].argsort()]
+        logger.info("The benign clients: {},\n\t scores:{}".format(bgn[0], bgn[1]))
+        logger.info("The malicious clients: {},\n\t scores:{}".format(adv[0], adv[1]))
 
         # aggregation
         selected_models = [client_models[i] for i in top_k_ind]

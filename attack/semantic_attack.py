@@ -26,7 +26,9 @@ class SemanticAttack:
                  stealth_rate: float,
                  scale_weight: float,
                  poison_images: dict,
-                 device
+                 device,
+                 *args,
+                 **kwargs
                  ):
         self.local_epochs = local_epochs
         self.batch_size = batch_size
