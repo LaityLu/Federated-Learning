@@ -9,11 +9,12 @@ from utils import parameters_dict_to_vector
 class Krum:
     # if num_selected_clients = 1, it's Krum.
     # if num_selected_clients = n - f, it's Multi-Krum.
-    def __init__(self, estimated_num_attacker, num_selected_clients=1):
+    def __init__(self, estimated_num_attacker, adversary_list, num_selected_clients=1, *args, **kwargs):
         self.num_adv = estimated_num_attacker
         self.num_selected = num_selected_clients
+        self.adversary_list = adversary_list
 
-    def exec(self, global_model, client_models, client_idxes, num_dps, aggregator_name):
+    def exec(self, global_model, client_models, client_idxes, num_dps, aggregator_name, *args, **kwargs):
 
         # flatten the model into a one-dimensional tensor
         v_client_models = [parameters_dict_to_vector(cm).detach().cpu().numpy() for cm in client_models]

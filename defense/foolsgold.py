@@ -63,7 +63,7 @@ def weighted_aggregation(global_model, client_models, weights, num_dps):
 
 
 class FoolsGold:
-    def __init__(self, use_memory=False):
+    def __init__(self, use_memory=False, *args, **kwargs):
         self.memory_grads_dict = dict()
         self.use_memory = use_memory
         self.num_clients = 10

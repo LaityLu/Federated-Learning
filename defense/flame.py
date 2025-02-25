@@ -11,10 +11,11 @@ from utils.logger_config import logger
 
 class Flame:
 
-    def __init__(self, noise=0.001):
+    def __init__(self, adversary_list, noise, *args, **kwargs):
         self.noise = noise
+        self.adversary_list = adversary_list
 
-    def exec(self, global_model, client_models, client_idxes, num_dps, aggregator_name):
+    def exec(self, global_model, client_models, client_idxes, num_dps, aggregator_name, *args, **kwargs):
         num_clients = len(client_models)
         # compute the update for every client
         update_params = []

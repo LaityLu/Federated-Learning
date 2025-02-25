@@ -158,11 +158,11 @@ class DBA:
             batch_loss = []
             correct = 0
             # load poisoning test data
-            data_size = self.batch_size * 10
+            data_size = self.batch_size * 20
             ldr_test = DataLoader(DatasetSplit(dataset, idxes=test_data_idxes),
                                   batch_size=self.batch_size)
             for batch_idx, (images, labels) in enumerate(ldr_test):
-                if batch_idx == 10:
+                if batch_idx == 20:
                     break
                 for i in range(len(images)):
                     images[i] = add_pixel_pattern(images[i], -1, self.trigger_args)

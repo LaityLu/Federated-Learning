@@ -7,13 +7,14 @@ import aggregator
 
 class MultiMetrics:
 
-    def __init__(self, top_k: float):
+    def __init__(self, top_k: float, adversary_list: list, *args, **kwargs):
         self.top_k = top_k
+        self.adversary_list = adversary_list
         self.round = 0
         self.FNR = 0
         self.FPR = 0
 
-    def exec(self, global_model, client_models, client_idxes, num_dps, aggregator_name):
+    def exec(self, global_model, client_models, client_idxes, num_dps, aggregator_name, *args, **kwargs):
         # flatten the model into a one-dimensional tensor
         v_global_model = parameters_dict_to_vector(global_model).detach().cpu().numpy()
         v_client_models = [parameters_dict_to_vector(cm).detach().cpu().numpy() for cm in client_models]

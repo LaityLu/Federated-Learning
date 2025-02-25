@@ -61,7 +61,8 @@ if __name__ == '__main__':
                                                                     device=device)
     # get the defender
     if config['FL']['is_defense']:
-        defender = getattr(defense, config['Defense']['name'])(**config['Defense']['args'])
+        defender = getattr(defense, config['Defense']['name'])(**config['Defense']['args'],
+                                                               adversary_list=config['Attack']['adversary_list'])
 
     # fed training process
     num_select_clients = max(int(config['FL']['frac'] * config['FL']['num_clients']), 1)
@@ -71,6 +72,7 @@ if __name__ == '__main__':
     else:
         benign_client_idxes = clients_idxes
     round_losses = []
+    BA = []
     for rd in range(config['FL']['round']):
         # select clients and store their dataset size
         select_clients = np.random.choice(benign_client_idxes, num_select_clients, replace=False).tolist()
@@ -80,7 +82,7 @@ if __name__ == '__main__':
                 select_adv = config['Attack']['adversary_list']
             else:
                 # DBA
-                select_adv = random.sample(config['Attack']['adversary_list'], 2)
+                select_adv = random.sample(config['Attack']['adversary_list'], config['Attack']['num_adv_each_round'])
             for i, adv_idxes in enumerate(select_adv):
                 select_clients[i] = adv_idxes
         num_dps = [list_num_dps[i] for i in select_clients]
@@ -139,6 +141,7 @@ if __name__ == '__main__':
                 test_attack_accuracy, _ = attacker.eval(dataset_test, global_model)
             print("Attack accuracy: {:.2f}%".format(test_attack_accuracy))
             logger.info("Attack accuracy: {:.2f}%".format(test_attack_accuracy))
+            BA.append(test_attack_accuracy)
 
     # save the final global model
     if config['FL']['save_model']:
@@ -150,3 +153,8 @@ if __name__ == '__main__':
         plt.plot(range(len(round_losses)), round_losses)
         plt.ylabel('train_loss')
         plt.savefig('./save/loss/{}.png'.format(formatted_time))
+    if config['FL']['is_attack']:
+        plt.figure()
+        plt.plot(range(len(BA)), BA)
+        plt.ylabel('BA')
+        plt.savefig('./save/backdoor_accuracy/{}.png'.format(formatted_time))
