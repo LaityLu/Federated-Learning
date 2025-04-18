@@ -5,8 +5,9 @@ import torch
 from sklearn.cluster import HDBSCAN
 
 import aggregator
-from utils import parameters_dict_to_vector
-from utils.logger_config import logger
+from utils import parameters_dict_to_vector, setup_logger
+
+logger = setup_logger()
 
 
 class Flame:
@@ -16,6 +17,7 @@ class Flame:
         self.adversary_list = adversary_list
 
     def exec(self, global_model, client_models, client_idxes, num_dps, aggregator_name, *args, **kwargs):
+        logger.debug('Flame begin::')
         num_clients = len(client_models)
         # compute the update for every client
         update_params = []
@@ -62,9 +64,9 @@ class Flame:
         for i in range(num_clients):
             norm_list = np.append(norm_list, torch.norm(v_update_params[i], p=2).item())
 
-        logger.info("cluster labels: {}".format(cluster_labels))
-        logger.info("The benign clients: {}".format(benign_client))
-        logger.info("The malicious clients: {}".format(malicious_client))
+        logger.debug("cluster labels: {}".format(cluster_labels))
+        logger.debug("The benign clients: {}".format(benign_client))
+        logger.debug("The malicious clients: {}".format(malicious_client))
 
         clip_value = np.median(norm_list)
         for i in range(len(benign_client)):
@@ -86,5 +88,8 @@ class Flame:
                 continue
             temp = copy.deepcopy(var)
             temp = temp.normal_(mean=0, std=self.noise * clip_value)
+            logger.debug(f'the added noise std: {self.noise * clip_value}')
             var += temp
+
+        logger.debug('Flame end::')
         return global_model_state_dict

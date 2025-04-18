@@ -3,7 +3,7 @@ import torch.nn.functional as F
 
 
 class CNNCifar(nn.Module):
-    def __init__(self, num_classes):
+    def __init__(self, num_classes=10, *args, **kwargs):
         super(CNNCifar, self).__init__()
         self.conv1 = nn.Conv2d(3, 32, 5, padding=2)
         self.bn1 = nn.BatchNorm2d(32)

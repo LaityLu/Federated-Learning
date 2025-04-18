@@ -2,7 +2,7 @@ gpu: 0
 
 # Federated arguments
 FL:
-  round: 100
+  round: 101
   num_clients: 100
   frac: 0.1
   test_batch_size: 128
@@ -31,12 +31,12 @@ Dataset:
 
 # Sampling arguments
 Sampler:
-#  name: UniformSampler
-#  args:
-#    groupby: false
-  name: DirichletSampler
+  name: UniformSampler
   args:
-    alpha: 0.5
+    groupby: false
+#  name: DirichletSampler
+#  args:
+#    alpha: 0.5
 
 # Model arguments
 Model:
@@ -49,18 +49,17 @@ Model:
 Defense:
   name: Krum
   args:
-    estimated_num_attacker: 1
     num_selected_clients: 1
 
 # Attack arguments
 Attack:
   name: SemanticAttack
   adversary_list: [1]
-  attack_round: [14]
+  attack_round: [84]
   poison_images:
-    target_label: 2
+    poison_label_swap: 2
     ## cars with vertically striped walls in the background: 7 + 5 = 12
-    train: [ 568, 33105, 33615, 33907, 36848, 40713, 41706 ]
+    train: [ 568, 33105, 33615, 33907, 36848, 40713, 41706]
     test: [ 330, 3934, 12336, 30560, 30696 ]
     ## cars with racing stripes: 15 + 7 = 22
 #    train: [ 2180, 2771, 3233, 4932, 6241, 6813, 6869, 9476, 11395, 11744,

@@ -1,3 +1,3 @@
-from .cifar import cifar_dataset
-from .mnist import mnist_dataset
-from .fmnist import fmnist_dataset
+from .cifar10 import cifar10
+from .mnist import mnist
+from .fmnist import fmnist

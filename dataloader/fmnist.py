@@ -1,7 +1,7 @@
 from torchvision import datasets, transforms
 
 
-def fmnist_dataset(data_dir):
+def fmnist():
     apply_transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.5,), (0.5,))])

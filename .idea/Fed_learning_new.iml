@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/save" />
+      <excludeFolder url="file://$MODULE_DIR$/save/backdoor_accuracy" />
+      <excludeFolder url="file://$MODULE_DIR$/save/data_sampled" />
+      <excludeFolder url="file://$MODULE_DIR$/save/fig" />
+      <excludeFolder url="file://$MODULE_DIR$/save/fig/cluster" />
+      <excludeFolder url="file://$MODULE_DIR$/save/fig/cluster_0" />
+      <excludeFolder url="file://$MODULE_DIR$/save/final_model" />
+      <excludeFolder url="file://$MODULE_DIR$/save/historical_information" />
+      <excludeFolder url="file://$MODULE_DIR$/save/logs" />
+      <excludeFolder url="file://$MODULE_DIR$/save/logs/cifar10" />
+      <excludeFolder url="file://$MODULE_DIR$/save/loss_curve" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="PyDocumentationSettings">
+    <option name="renderExternalDocumentation" value="true" />
+  </component>
+</module>

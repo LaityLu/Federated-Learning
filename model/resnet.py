@@ -89,7 +89,7 @@ class ResNet(nn.Module):
         return F.log_softmax(out, dim=1)
 
 
-def ResNet18(num_classes=10):
+def ResNet18(num_classes=10, *args, **kwargs):
     return ResNet(BasicBlock, [2, 2, 2, 2], num_classes)
 
 

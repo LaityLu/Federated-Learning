@@ -4,8 +4,9 @@ from torch import nn
 from torch.utils.data import Dataset, DataLoader
 import torch.nn.functional as F
 import torch.optim as optim
-from utils import DatasetSplit
-from utils.logger_config import logger
+from utils import DatasetSplit, setup_logger
+
+logger = setup_logger()
 
 
 def get_dis_loss(g_model, l_model):
@@ -26,6 +27,7 @@ class SemanticAttack:
                  stealth_rate: float,
                  scale_weight: float,
                  poison_images: dict,
+                 poison_label_swap: int,
                  device,
                  *args,
                  **kwargs
@@ -35,6 +37,7 @@ class SemanticAttack:
         self.loss_function = getattr(F, loss_function)
         self.optimizer = optimizer
         self.poison_images = poison_images
+        self.poison_label_swap = poison_label_swap
         self.stealth_rate = stealth_rate
         self.scale_weight = scale_weight
         self.device = device
@@ -74,7 +77,7 @@ class SemanticAttack:
                     images[i] = dataset[self.poison_images['train'][i]][0]
                     # add gaussian noise
                     images[i].add_(torch.FloatTensor(images[i].shape).normal_(0, 0.01))
-                    labels[i] = self.poison_images['poison_label_swap']
+                    labels[i] = self.poison_label_swap
                 images = images.to(self.device)
                 labels = labels.to(self.device)
                 model.zero_grad()
@@ -94,8 +97,7 @@ class SemanticAttack:
 
         # test the acc and loss of poisoning model on poisoning data
         acc_p, loss_p = self.eval(dataset, model)
-        print("local model attack accuracy:{:.2f}%, loss:{:.4f}".format(acc_p, loss_p))
-        logger.info("local model attack accuracy:{:.2f}%, loss:{:.4f}".format(acc_p, loss_p))
+        logger.debug("local model attack accuracy:{:.2f}%, loss:{:.4f}".format(acc_p, loss_p))
 
         # scale the model weight
         for key, value in model.state_dict().items():
@@ -119,12 +121,12 @@ class SemanticAttack:
             for batch_idx, (data, target) in enumerate(ldr_test):
                 data, target = data.to(self.device), target.to(self.device)
                 output = model(data)
-                target.fill_(self.poison_images['poison_label_swap'])
+                target.fill_(self.poison_label_swap)
                 # compute the loss
                 loss = self.loss_function(output, target)
                 batch_loss.append(loss.item())
                 y_pred = output.data.max(1, keepdim=True)[1]
-                print("attack pred:{}".format(y_pred.tolist()))
+                logger.debug("attack pred:{}".format(y_pred.tolist()))
                 correct += y_pred.eq(target.data.view_as(y_pred)).long().cpu().sum()
             test_loss = sum(batch_loss) / len(batch_loss)
             test_accuracy = 100.00 * correct / data_size

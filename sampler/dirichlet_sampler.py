@@ -2,20 +2,19 @@ import numpy as np
 
 
 class DirichletSampler:
-    def __init__(self, dataset, num_clients, alpha, poison_images=None):
+    def __init__(self, dataset, num_clients, alpha, *args, **kwargs):
         """
         :param dataset:
         :param num_clients:
         :param alpha: concentration parameters of Dirichlet distribution
-        :param args:
         """
         self.dataset = dataset
         self.num_dps = len(dataset)
         self.num_clients = num_clients
         self.alpha = alpha
-        self.poison_images = poison_images
+        self.poison_images = kwargs.get('poison_images', None)
 
-    def sample(self):
+    def sample(self, *args, **kwargs):
         """
         :return: the dictionary of clients' data points idxes, such as
                     { 0:[213, 2423, 343], 1:[4432, 5123, 6432], ... 99:[4324, 3432, 1231] }
@@ -33,7 +32,7 @@ class DirichletSampler:
         # get labels
         all_labels = self.dataset.targets
         labels = np.unique(all_labels)
-        # if attack training, exclude the poisoning data points idxes
+        # if attack training requires it, exclude the poisoning data points idxes
         if self.poison_images is not None:
             all_dps_idxes = list(set(all_dps_idxes) - set(self.poison_images['train']) - set(self.poison_images['test']))
             all_labels = np.delete(all_labels, list(set(self.poison_images['train']) | set(self.poison_images['test'])))

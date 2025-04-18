@@ -6,7 +6,9 @@ import torch.nn.functional as F
 from torch import nn, optim
 from torch.utils.data import Dataset, DataLoader
 
-from utils import DatasetSplit
+from utils import DatasetSplit, setup_logger
+
+logger = setup_logger()
 
 
 def get_dis_loss(g_model, l_model):
@@ -91,24 +93,24 @@ class DBA:
         self.adversary_list = adversary_list
         self.test_data_idxes = None
 
-    def exec(self, dataset: Dataset, data_idxes, model: nn.Module, adversarial_index):
-        adversarial_index = self.adversary_list.index(adversarial_index)
+    def exec(self, dataset: Dataset, data_idxes, initial_model: nn.Module, adversarial_index):
+        adversarial_index = self.adversary_list.index(adversarial_index) % 4
 
         # copy the global model in the last round
         global_model = dict()
-        for key, value in model.state_dict().items():
+        for key, value in initial_model.state_dict().items():
             global_model[key] = value.clone().detach().requires_grad_(False)
 
-        model.to(self.device)
+        initial_model.to(self.device)
 
         # create the optimizer
-        optimizer = getattr(optim, self.optimizer['name'])(model.parameters(), **self.optimizer['args'])
+        optimizer = getattr(optim, self.optimizer['name'])(initial_model.parameters(), **self.optimizer['args'])
 
         # load dataset
         train_loader = DataLoader(DatasetSplit(dataset, data_idxes), batch_size=self.batch_size, shuffle=True)
 
         # start training
-        model.train()
+        initial_model.train()
         # store the loss peer epoch
         epoch_loss = []
         for epoch in range(self.local_epochs):
@@ -123,12 +125,12 @@ class DBA:
                     labels[i] = self.poison_label_swap
                 images = images.to(self.device)
                 labels = labels.to(self.device)
-                model.zero_grad()
-                output = model(images)
+                initial_model.zero_grad()
+                output = initial_model(images)
                 # compute classification loss
                 class_loss = self.loss_function(output, labels)
                 # compute distance loss
-                distance_loss = get_dis_loss(global_model, model.state_dict())
+                distance_loss = get_dis_loss(global_model, initial_model.state_dict())
                 # compute the final loss
                 loss = (1 - self.stealth_rate) * class_loss + self.stealth_rate * distance_loss
                 loss.backward()
@@ -138,37 +140,31 @@ class DBA:
                 # print(sum(batch_loss) / len(batch_loss))
             epoch_loss.append(sum(batch_loss) / len(batch_loss))
 
-            # # test the acc and loss of poisoning model on poisoning data
-            # acc_p, loss_p = self.eval(dataset, model)
-            # print("local model attack accuracy:{:.2f}%, loss:{:.4f}".format(acc_p, loss_p))
-
             # return the updated model state dict and the average loss
-            return model.state_dict(), sum(epoch_loss) / len(epoch_loss)
+            return initial_model.state_dict(), sum(epoch_loss) / len(epoch_loss)
 
-    def eval(self, dataset: Dataset, model: nn.Module):
+    def eval(self, dataset: Dataset, eval_model: nn.Module):
         if self.test_data_idxes is not None:
             pass
         else:
             self.test_data_idxes = get_test_data_idxes(dataset, self.poison_label_swap)
         test_data_idxes = self.test_data_idxes
-        model = model.to(self.device)
-        model.eval()
+        eval_model = eval_model.to(self.device)
+        eval_model.eval()
         with torch.no_grad():
             # store the loss and num of correct classification
             batch_loss = []
             correct = 0
             # load poisoning test data
-            data_size = self.batch_size * 20
+            data_size = len(dataset)
             ldr_test = DataLoader(DatasetSplit(dataset, idxes=test_data_idxes),
                                   batch_size=self.batch_size)
             for batch_idx, (images, labels) in enumerate(ldr_test):
-                if batch_idx == 20:
-                    break
                 for i in range(len(images)):
                     images[i] = add_pixel_pattern(images[i], -1, self.trigger_args)
                     labels[i] = self.poison_label_swap
                 images, labels = images.to(self.device), labels.to(self.device)
-                output = model(images)
+                output = eval_model(images)
                 labels.fill_(self.poison_label_swap)
                 # compute the loss
                 loss = self.loss_function(output, labels)

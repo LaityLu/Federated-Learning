@@ -1,7 +1,7 @@
 from torchvision import datasets, transforms
 
 
-def mnist_dataset():
+def mnist():
     trans_mnist = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.1307,), (0.3081,))

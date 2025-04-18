@@ -1,10 +1,9 @@
 import copy
 import numpy as np
-import torch
 import sklearn.metrics.pairwise as smp
 
-from utils.logger_config import logger
-from utils import parameters_dict_to_vector
+from utils import parameters_dict_to_vector, setup_logger
+logger = setup_logger()
 
 
 # Takes in grad
@@ -46,19 +45,15 @@ def fools_gold(grads, num_clients):
     return wv
 
 
-def weighted_aggregation(global_model, client_models, weights, num_dps):
+def weighted_aggregation(global_model, client_models, weights, num_dps, lr):
     # weights = weights / np.sum(weights)
     freq = [snd / sum(num_dps) for snd in num_dps]
-    agg_model = copy.deepcopy(client_models[0])
+    agg_model = copy.deepcopy(global_model)
     for k in global_model.keys():
         if k.split('.')[-1] == 'num_batches_tracked':
             continue
-        agg_model[k] = 0.5 * agg_model[k] * freq[0] * weights[0]
-    for k in global_model.keys():
-        if k.split('.')[-1] == 'num_batches_tracked':
-            continue
-        for i in range(1, len(client_models)):
-            agg_model[k] += 0.5 * (client_models[i][k] - global_model[k]) * freq[i] * weights[i]
+        for i in range(len(client_models)):
+            agg_model[k] += lr * (client_models[i][k] - global_model[k]) * freq[i] * weights[i]
     return agg_model
 
 
@@ -67,8 +62,10 @@ class FoolsGold:
         self.memory_grads_dict = dict()
         self.use_memory = use_memory
         self.num_clients = 10
+        self.FL_lr = 0.5  # for convergence
 
     def exec(self, global_model, client_models, client_idxes, num_dps, *args, **kwargs):
+        logger.debug('FoolsGold begin::')
 
         self.num_clients = len(client_idxes)
 
@@ -99,12 +96,13 @@ class FoolsGold:
             wv = fools_gold(memory_grads_array, self.num_clients)
         else:
             wv = fools_gold(grads_array, self.num_clients)
-        logger.info(f'clients idxes:{client_idxes}')
         weights = [w.round(3) for w in wv]
-        logger.info(f'foolsgold aggregation weights: {weights}')
+        logger.debug(f'foolsgold aggregation weights: {weights}')
 
         # aggregation
-        global_model_state_dict = weighted_aggregation(global_model, client_models, wv, num_dps)
+        global_model_state_dict = weighted_aggregation(global_model, client_models, wv, num_dps, self.FL_lr)
+
+        logger.debug('FoolsGold end')
 
         # return the aggregated global model state dict
         return global_model_state_dict

@@ -2,7 +2,7 @@ import numpy as np
 
 
 class UniformSampler:
-    def __init__(self, dataset, num_clients, groupby=False, poison_images=None):
+    def __init__(self, dataset, num_clients, groupby=False, *args, **kwargs):
         """
         :param dataset:
         :param num_clients:
@@ -13,9 +13,9 @@ class UniformSampler:
         self.groupby = groupby
         self.num_dps = len(dataset)
         self.num_dps_per_client = int(self.num_dps / self.num_clients)
-        self.poison_images = poison_images
+        self.poison_images = kwargs.get('poison_images', None)
 
-    def sample(self):
+    def sample(self, *args, **kwargs):
         """
         :return: the dictionary of clients' data points idxes, such as
                     { 0:[213, 2423, 343], 1:[4432, 5123, 6432], ... 99:[4324, 3432, 1231] }

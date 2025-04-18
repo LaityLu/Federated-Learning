@@ -1,7 +1,7 @@
 from torchvision import datasets, transforms
 
 
-def cifar_dataset():
+def cifar10():
     trans_cifar = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),

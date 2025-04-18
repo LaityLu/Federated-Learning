@@ -1,20 +1,21 @@
 import numpy as np
-import torch
 
 import aggregator
-from utils.logger_config import logger
-from utils import parameters_dict_to_vector
+from utils import parameters_dict_to_vector, setup_logger
+
+logger = setup_logger()
 
 
 class Krum:
     # if num_selected_clients = 1, it's Krum.
     # if num_selected_clients = n - f, it's Multi-Krum.
-    def __init__(self, estimated_num_attacker, adversary_list, num_selected_clients=1, *args, **kwargs):
-        self.num_adv = estimated_num_attacker
+    def __init__(self, adversary_list, num_selected_clients=1, *args, **kwargs):
+        self.num_adv = len(adversary_list)
         self.num_selected = num_selected_clients
         self.adversary_list = adversary_list
 
     def exec(self, global_model, client_models, client_idxes, num_dps, aggregator_name, *args, **kwargs):
+        logger.debug('Krum begin::')
 
         # flatten the model into a one-dimensional tensor
         v_client_models = [parameters_dict_to_vector(cm).detach().cpu().numpy() for cm in client_models]
@@ -44,13 +45,15 @@ class Krum:
         adv_clients = [client_idxes[i] for i in non_selected_index]
         adv_scores = [scores[i].round(2) for i in non_selected_index]
 
-        logger.info("The benign clients: {},\n\t scores:{}".format(benign_clients, benign_scores))
-        logger.info("The malicious clients: {},\n\t scores:{}".format(adv_clients, adv_scores))
+        logger.debug("The benign clients: {},\n\t scores:{}".format(benign_clients, benign_scores))
+        logger.debug("The malicious clients: {},\n\t scores:{}".format(adv_clients, adv_scores))
 
         # aggregation
         selected_models = [client_models[i] for i in selected_index]
         selected_num_dps = [num_dps[i] for i in selected_index]
         global_model_state_dict = getattr(aggregator, aggregator_name)(selected_models, selected_num_dps)
+
+        logger.debug('Krum end')
 
         # return the aggregated global model state dict
         return global_model_state_dict

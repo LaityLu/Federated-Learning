@@ -8,7 +8,7 @@ FL:
   test_batch_size: 128
   is_attack: true
   is_defense: true
-  aggregator: FedAvg  # useless in foolsgold
+  aggregator: FedAvg
   save_model: false
   plot_loss_curve: false
 
@@ -47,9 +47,9 @@ Model:
 
 # Defense arguments
 Defense:
-  name: FoolsGold
+  name: Ours
   args:
-    use_memory: true
+    useless: 0
 
 # Attack arguments
 Attack:
@@ -80,3 +80,5 @@ Attack:
         momentum: 0.5
     stealth_rate: 0
     scale_weight: 10
+
+# other arguments
