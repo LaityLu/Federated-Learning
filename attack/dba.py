@@ -79,6 +79,7 @@ class DBA:
                  trigger: dict,
                  adversary_list: list,
                  device,
+                 *args,
                  **kwargs
                  ):
         self.local_epochs = local_epochs

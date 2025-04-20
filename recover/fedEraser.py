@@ -10,10 +10,21 @@ logger = setup_logger()
 
 
 class FedEraser(RecoverBase):
-    def __init__(self, dataset_train, dataset_test, dict_clients, list_num_dps,
-                 select_info, malicious_clients, *args, **kwargs):
-        super().__init__(dataset_train, dataset_test, dict_clients,
-                         list_num_dps, select_info, malicious_clients)
+    def __init__(self,
+                 dataset_train,
+                 dataset_test,
+                 dict_clients,
+                 list_num_dps,
+                 select_info,
+                 malicious_clients,
+                 *args,
+                 **kwargs):
+        super().__init__(dataset_train,
+                         dataset_test,
+                         dict_clients,
+                         list_num_dps,
+                         select_info,
+                         malicious_clients)
         self.round_interval = kwargs.get('round_interval', 1)
         self.local_epochs = kwargs.get('local_epochs', 2)
         self.aggregator = kwargs.get('aggregator', 'FedAvg')
@@ -26,13 +37,8 @@ class FedEraser(RecoverBase):
         new_global_model = old_global_models[0]
         for rd in range(0, self.old_global_round, self.round_interval):
             # select remaining clients
-            remaining_clients_id = []
-            remaining_clients_models = []
-            for i, client_id in enumerate(self.select_info[rd]):
-                if client_id not in self.malicious_clients:
-                    remaining_clients_id.append(client_id)
-                    remaining_clients_models.append(old_client_models[rd][i])
-            num_dps = [self.list_num_dps[i] for i in remaining_clients_id]
+            remaining_clients_id, remaining_clients_models, num_dps = \
+                self.remove_malicious_clients(self.select_info[rd], old_client_models[rd])
             # begin training
             logger.info("----- FedEraser Recover Round {:3d}  -----".format(rd))
             logger.info(f'remaining client:{remaining_clients_id}')
@@ -41,7 +47,7 @@ class FedEraser(RecoverBase):
             local_models = []
 
             if rd == 0:
-                # the first recover round doesn't need calibration but aggregate the old cm directly
+                # the first recover round doesn't need calibration but aggregate the old client models directly
                 old_cm_state = [remaining_clients_models[i].state_dict() for i in range((len(remaining_clients_models)))]
                 new_global_model.load_state_dict(getattr(aggregator, self.aggregator)(old_cm_state, num_dps))
                 round_loss = 0

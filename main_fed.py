@@ -92,7 +92,6 @@ if __name__ == '__main__':
         benign_client_idxes = np.setdiff1d(clients_idxes, config['Attack']['adversary_list'], assume_unique=True)
     else:
         benign_client_idxes = clients_idxes
-    # malicious_clients = []
     # malicious_records = [0] * config['FL']['num_clients']
     round_losses = []
     MA = []
@@ -109,8 +108,6 @@ if __name__ == '__main__':
                                               config['Attack']['num_adv_each_round'], replace=False).tolist()
             select_adv = random.sample(config['Attack']['adversary_list'], config['Attack']['num_adv_each_round'])
             select_clients += select_adv
-        # # remove the malicious clients that have been detected
-        # select_clients = list(set(select_clients) - set(malicious_clients))
         select_info.append(select_clients)
         num_dps = [list_num_dps[i] for i in select_clients]
 
@@ -143,9 +140,6 @@ if __name__ == '__main__':
                                                                  select_clients, num_dps, config['FL']['aggregator'])
             # for idx in mal_clients:
             #     malicious_records[idx] += 1
-            #     if malicious_records[idx] >= config['FL']['round']:
-            #         malicious_clients.append(idx)
-            #         print(f'client_{idx} is removed')
         else:
             # normal aggregation
             global_model_state_dict = getattr(aggregator, config['FL']['aggregator'])(local_models, num_dps)

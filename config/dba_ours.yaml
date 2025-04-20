@@ -28,8 +28,7 @@ Trainer:
 
 # Dataset arguments
 Dataset:
-  name: cifar10
-#  name: fmnist
+  name: cifar10   # choose: cifar10  mnist  fmnist
 
 # Sampling arguments
 Sampler:
@@ -42,9 +41,7 @@ Sampler:
 
 # Model arguments
 Model:
-  name: CNNCifar
-#  name: ResNet18
-#  name: CNNFashion_Mnist
+  name: CNNCifar   # choose: CNNCifar  CNNMnist  CNNFashion_Mnist  ResNet18
   args:
     num_classes: 10
 
@@ -96,9 +93,7 @@ Attack:
 
 # Recover arguments
 Recover:
-#  name: FedEraser
-  name: Crab
-#  name: Retrain
+  name: Crab    # choose: Retrain  FedEraser  Crab
   args:
     round_interval: 2
     local_epochs: 1

@@ -32,7 +32,7 @@ if __name__ == '__main__':
     log_file_path = os.path.join('./save/logs', config['Dataset']['name'])
     if not os.path.exists(log_file_path):
         os.makedirs(log_file_path)
-    logger = setup_logger(log_file_path + f'/{args.config}_' + config['Recover']['name'] + '.log')
+    logger = setup_logger(log_file_path + '/{}_{}.log'.format(args.config, config['Recover']['name']))
 
     # get dataset
     dataset_train, dataset_test = getattr(dataloader, config['Dataset']['name'])()

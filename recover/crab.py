@@ -22,10 +22,21 @@ def model_to_traj(GM_list):
 
 
 class Crab(FedEraser):
-    def __init__(self, dataset_train, dataset_test, dict_clients, list_num_dps,
-                 select_info, malicious_clients, *args, **kwargs):
-        super().__init__(dataset_train, dataset_test, dict_clients,
-                         list_num_dps, select_info, malicious_clients)
+    def __init__(self,
+                 dataset_train,
+                 dataset_test,
+                 dict_clients,
+                 list_num_dps,
+                 select_info,
+                 malicious_clients,
+                 *args,
+                 **kwargs):
+        super().__init__(dataset_train,
+                         dataset_test,
+                         dict_clients,
+                         list_num_dps,
+                         select_info,
+                         malicious_clients)
         self.local_epochs = kwargs.get('local_epochs', 2)
         self.aggregator = kwargs.get('aggregator', 'FedAvg')
         self.P_rounds = kwargs.get('select_round_ratio', 0.6)
@@ -138,13 +149,8 @@ class Crab(FedEraser):
         new_global_model = old_global_models[0]
         for rd in range(len(self.list_select_rounds)):
             # select remaining clients
-            remaining_clients_id = []
-            remaining_clients_models = []
-            for i, client_id in enumerate(self.list_select_clients[rd]):
-                if client_id not in self.malicious_clients:
-                    remaining_clients_id.append(client_id)
-                    remaining_clients_models.append(old_client_models[rd][i])
-            num_dps = [self.list_num_dps[i] for i in remaining_clients_id]
+            remaining_clients_id, remaining_clients_models, num_dps = \
+                self.remove_malicious_clients(self.list_select_clients[rd], old_client_models[rd])
             # begin training
             logger.info("----- Crab Recover Round {:3d}  -----".format(rd))
             logger.info(f'remaining client:{remaining_clients_id}')

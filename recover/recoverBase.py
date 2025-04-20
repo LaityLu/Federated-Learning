@@ -8,5 +8,14 @@ class RecoverBase:
         self.malicious_clients = malicious_clients
         self.old_global_round = len(select_info)
 
-    def select_unlearned_clients(self, *args, **kwargs):
-        pass
+    def remove_malicious_clients(self, c_ids, old_CM=None, *args, **kwargs):
+        remaining_clients_id = []
+        remaining_clients_models = []
+        for i, client_id in enumerate(c_ids):
+            if client_id not in self.malicious_clients:
+                remaining_clients_id.append(client_id)
+                if old_CM is not None:
+                    remaining_clients_models.append(old_CM[i])
+        num_dps = [self.list_num_dps[i] for i in remaining_clients_id]
+
+        return remaining_clients_id, remaining_clients_models, num_dps

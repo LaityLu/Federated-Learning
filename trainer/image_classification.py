@@ -20,17 +20,22 @@ class ImageClassificationTrainer:
         self.optimizer = optimizer
         self.device = device
 
-    def update(self, dataset: Dataset, idxes, model: nn.Module, add_item=None):
+    def update(self, dataset: Dataset, idxes, model: nn.Module, add_item=None, use_LBFGS=False):
         """
         :param dataset:
         :param idxes: the data points idxes
         :param model:
         :param add_item: the loss item ,such as FedProx
+        :param use_LBFGS: it' for FedRecover
         :return:
         """
         model.to(self.device)
         # create the optimizer
-        optimizer = getattr(optim, self.optimizer['name'])(model.parameters(), **self.optimizer['args'])
+        if use_LBFGS:
+            optimizer = torch.optim.LBFGS(params=model.parameters(), lr=self.optimizer['args']['lr'], history_size=1,
+                                          max_iter=4)
+        else:
+            optimizer = getattr(optim, self.optimizer['name'])(model.parameters(), **self.optimizer['args'])
 
         # load dataset
         train_loader = DataLoader(DatasetSplit(dataset, idxes), batch_size=self.batch_size, shuffle=True)
