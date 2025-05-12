@@ -1,4 +1,5 @@
 import copy
+import time
 
 import numpy as np
 import torch
@@ -7,18 +8,9 @@ import aggregator
 from .fedEraser import FedEraser
 import torch.nn.functional as F
 
-from utils import setup_logger
+from utils import setup_logger, model_to_traj
 
 logger = setup_logger()
-
-
-def model_to_traj(GM_list):
-    traj = []
-    for model in GM_list:
-        timestamp = []
-        timestamp.extend([p.detach().clone() for p in model.parameters()])
-        traj.append(timestamp)
-    return traj
 
 
 class Crab(FedEraser):
@@ -48,6 +40,7 @@ class Crab(FedEraser):
         self.list_select_clients = []
 
     def recover(self, local_trainer, old_global_models, old_client_models, *args, **kwargs):
+        start_time = time.time()
         start_round = 0
         start_loss = self.train_loss[0]
         for i in range(1, self.old_global_round):
@@ -69,6 +62,8 @@ class Crab(FedEraser):
         index = self.list_select_rounds.index(rollback_round)
         self.list_select_rounds = self.list_select_rounds[index:]
         self.list_select_clients = self.list_select_clients[index:]
+
+        self.time_cost += time.time() - start_time
 
         sel_old_GM = []
         sel_old_CM = []
@@ -132,12 +127,12 @@ class Crab(FedEraser):
 
         sel_client_id = [self.select_info[rd][idx] for idx in sel_client]
 
-        logger.debug(f'This round choose: {sel_client_id}')
+        logger.debug(f'Round {rd} choose: {sel_client_id}')
 
         return sel_client_id
-    
+
     def adaptive_rollback(self):
-        rollback_round = self.list_select_rounds[12]
+        rollback_round = self.list_select_rounds[0]
         logger.info(f'Crab roll back to round: {rollback_round}')
         return rollback_round
 
@@ -148,6 +143,7 @@ class Crab(FedEraser):
         # get the initial global model
         new_global_model = old_global_models[0]
         for rd in range(len(self.list_select_rounds)):
+            start_time = time.time()
             # select remaining clients
             remaining_clients_id, remaining_clients_models, num_dps = \
                 self.remove_malicious_clients(self.list_select_clients[rd], old_client_models[rd])
@@ -155,12 +151,13 @@ class Crab(FedEraser):
             logger.info("----- Crab Recover Round {:3d}  -----".format(rd))
             logger.info(f'remaining client:{remaining_clients_id}')
             # store the local loss and local model for each client
-            locals_losses = []
+            local_losses = []
             local_models = []
 
             if rd == 0:
                 # the first recover round doesn't need calibration but aggregate the old cm directly
-                old_cm_state = [remaining_clients_models[i].state_dict() for i in range((len(remaining_clients_models)))]
+                old_cm_state = [remaining_clients_models[i].state_dict() for i in
+                                range((len(remaining_clients_models)))]
                 new_global_model.load_state_dict(getattr(aggregator, self.aggregator)(old_cm_state, num_dps))
                 round_loss = 0
             else:
@@ -168,16 +165,18 @@ class Crab(FedEraser):
                     local_model, local_loss = local_trainer.update(self.dataset_train, self.dict_clients[idxes],
                                                                    copy.deepcopy(new_global_model))
                     local_models.append(local_model)
-                    locals_losses.append(local_loss)
+                    local_losses.append(local_loss)
 
                 # calibration and aggregation
                 new_global_model.load_state_dict(self.calibration_training(old_global_models[rd],
                                                                            remaining_clients_models, new_global_model,
                                                                            local_models, num_dps))
                 # compute the average loss in a round
-                round_loss = sum(locals_losses) / len(locals_losses)
+                round_loss = sum(local_losses) / len(local_losses)
             logger.info('Training average loss: {:.3f}'.format(round_loss))
             round_losses.append(round_loss)
+
+            self.time_cost += time.time() - start_time
 
             # testing
             # main accuracy
@@ -186,6 +185,7 @@ class Crab(FedEraser):
             MA.append(round(test_accuracy.item(), 2))
 
         logger.info("----- The recover process end -----")
+        logger.info(f"Total time cost: {self.time_cost}s")
         logger.debug(f'Main Accuracy:{MA}')
 
         return new_global_model.state_dict()

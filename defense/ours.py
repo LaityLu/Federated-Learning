@@ -56,30 +56,11 @@ class Ours:
                     mht_dd[i] += m_dd
 
         # combine into a matrix
-        tri_distance = np.vstack([cos_dd, mht_dd, euc_dd]).T
-
-        # for i in range(num_clients):
-        #     for j in range(i+1, num_clients):
-        #         # Compute the different value of cosine distance
-        #         cosine_distance = float(
-        #             (1 - np.dot(v_client_models[i], v_client_models[j]) / (np.linalg.norm(v_client_models[i]) * np.linalg.norm(
-        #                 v_client_models[j]))) ** 2)
-        #         # Compute the different value of Manhattan distance
-        #         manhattan_distance = float(np.linalg.norm(v_client_models[i] - v_client_models[j], ord=1))
-        #         # Compute the different value of Euclidean distance
-        #         euclidean_distance = float(np.linalg.norm(v_client_models[i] - v_client_models[j]))
-        #         cos_dis[i] += cosine_distance
-        #         euc_dis[i] += euclidean_distance
-        #         mht_dis[i] += manhattan_distance
-        #         cos_dis[j] += cosine_distance
-        #         euc_dis[j] += euclidean_distance
-        #         mht_dis[j] += manhattan_distance
-        # # combine into a matrix
-        # tri_distance = np.vstack([cos_dis, euc_dis, mht_dis]).T
+        tri_distance_wg = np.vstack([cos_dd, mht_dd, euc_dd]).T
 
         # Z-score
         scaler = StandardScaler()
-        new_tri_distance = scaler.fit_transform(tri_distance)
+        new_tri_distance = scaler.fit_transform(tri_distance_wg)
 
         # cluster
         cluster = HDBSCAN(min_cluster_size=num_clients // 2 + 1, min_samples=1, allow_single_cluster=True).fit(
@@ -117,11 +98,11 @@ class Ours:
         logger.debug("The malicious clients: {}".format(adv_clients))
 
         # compute FP and FN
-        benign_clients = set(benign_clients)
-        adv_clients = set(adv_clients)
-        fn = len(benign_clients & set(self.adversary_list))
+        benign_clients_ = set(benign_clients)
+        adv_clients_ = set(adv_clients)
+        fn = len(benign_clients_ & set(self.adversary_list))
         self.FN += fn
-        fp = len((set(client_idxes) - set(self.adversary_list)) & adv_clients)
+        fp = len((set(client_idxes) - set(self.adversary_list)) & adv_clients_)
         self.FP += fp
         logger.debug("FN:{},\t FP:{}".format(self.FN, self.FP))
 

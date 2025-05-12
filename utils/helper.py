@@ -4,6 +4,7 @@ import os
 import numpy as np
 import torch
 from matplotlib import pyplot as plt
+
 from torch.utils.data import Dataset
 
 from .logger_setup import setup_logger
@@ -24,13 +25,70 @@ class DatasetSplit(Dataset):
         return image, label
 
 
+def model_to_traj(GM_list):
+    traj = []
+    for model in GM_list:
+        timestamp = []
+        timestamp.extend([p.detach().clone() for p in model.parameters()])
+        traj.append(timestamp)
+    return traj
+
+
 def parameters_dict_to_vector(net_dict) -> torch.Tensor:
+    """
+    :param net_dict: (dict)
+    :return: (torch.Tensor) shape: (x,)
+    """
     vec = []
     for key, param in net_dict.items():
         if key.split('.')[-1] != 'weight' and key.split('.')[-1] != 'bias':
             continue
         vec.append(param.view(-1))
     return torch.cat(vec)
+
+
+def parameters_to_vector(net) -> torch.Tensor:
+    """
+    :param net: (torch.nn.Module)
+    :return: (torch.Tensor) shape: (x,)
+    """
+    tmp = []
+    for param in net.parameters():
+        if param.requires_grad:
+            tmp.append(param.data.view(-1))
+    return torch.cat(tmp)
+
+
+def vector_to_parameters(vector, net):
+    """
+    :param vector: (torch.Tensor) shape: (x, 1)
+    :param net: (torch.nn.Module)
+    :return: (torch.nn.Module)
+    """
+    # Ensure the input vector is 2D and the second dimension is 1
+    if vector.dim() == 1:
+        vector = vector.unsqueeze(1)
+
+    # Get all the parameters in the net that require gradients
+    params = [param for param in net.parameters() if param.requires_grad]
+
+    # Calculate the number of elements for each parameter
+    param_sizes = [param.numel() for param in params]
+
+    # Calculate the cumulative sum of elements, used for slicing the vector
+    param_cum_sum = torch.cumsum(torch.tensor(param_sizes), dim=0)
+    param_cum_sum = torch.cat((torch.zeros(1), param_cum_sum))
+
+    # Slice the vector and reshape to match the original parameters' shapes
+    for i, param in enumerate(params):
+        # Calculate the start and end indices for the current parameter
+        start = int(param_cum_sum[i])
+        end = int(param_cum_sum[i + 1])
+
+        # Slice the vector and reshape
+        param.data = vector[start:end].view(param.size())
+
+    return net
 
 
 def visual_pca_whitening(data, client_idxes, the_round):
@@ -168,6 +226,32 @@ def load_select_info(path):
     return select_info
 
 
+def save_aggr_clients(path, info):
+    with open(path + '/aggregated_clients.json', 'w') as f:
+        json.dump(info, f)
+    logger.info("The aggregated clients info has been saved to disk.")
+
+
+def load_aggr_clients(path):
+    with open(path + '/aggregated_clients.json', 'r') as f:
+        info = json.load(f)
+    logger.info("The aggregated clients info has been loaded.")
+    return info
+
+
+def save_mal_records(path, info):
+    with open(path + '/malicious_records.json', 'w') as f:
+        json.dump(info, f)
+    logger.info("The malicious records info has been saved to disk.")
+
+
+def load_mal_records(path):
+    with open(path + '/malicious_records.json', 'r') as f:
+        info = json.load(f)
+    logger.info("The malicious records info has been loaded.")
+    return info
+
+
 def save_train_loss(path, info):
     with open(path + '/train_loss.json', 'w') as f:
         json.dump(info, f)
@@ -212,4 +296,47 @@ def load_client_model(dataset, global_round):
 
 
 if __name__ == '__main__':
+    from torch import nn
+    import torch.nn.functional as F
+
+
+    class CNNCifar(nn.Module):
+        def __init__(self, num_classes=10, *args, **kwargs):
+            super(CNNCifar, self).__init__()
+            self.conv1 = nn.Conv2d(3, 32, 5, padding=2)
+            self.bn1 = nn.BatchNorm2d(32)
+            self.conv2 = nn.Conv2d(32, 64, 5, padding=2)
+            self.bn2 = nn.BatchNorm2d(64)
+            self.fc1 = nn.Linear(64 * 8 * 8, 512)
+            self.fc2 = nn.Linear(512, num_classes)
+            self.dropout = nn.Dropout(0.5)
+
+        def forward(self, x):
+            x = self.bn1(F.max_pool2d(F.relu(self.conv1(x)), 2))
+            x = self.bn2(F.max_pool2d(F.relu(self.conv2(x)), 2))
+            x = x.view(-1, 64 * 8 * 8)
+            x = F.relu(self.fc1(x))
+            x = self.dropout(x)
+            x = self.fc2(x)
+            return F.log_softmax(x, dim=1)
+
+
+    model1 = CNNCifar().to('cuda')
+    model2 = CNNCifar().to('cuda')
+    # dict1 = parameters_dict_to_vector(model1.state_dict())
+    # dict1_ = dict1.unsqueeze(1)
+    # dict2 = parameters_dict_to_vector(model2.state_dict())
+    # dict2_ = dict2.unsqueeze(1)
+    # dict_ = torch.cat([dict1_, dict2_], dim=1)
+    param1 = parameters_to_vector(model1)
+    param1_ = param1.unsqueeze(1)
+    param2 = parameters_to_vector(model2)
+    param2_ = param2.unsqueeze(1)
+    print(torch.equal(param1_, param2_))
+    # param_ = torch.cat([param1_, param2_], dim=1)
+    model2 = vector_to_parameters(param1_, model2)
+    param3 = parameters_to_vector(model2)
+    param3_ = param3.unsqueeze(1)
+    print(torch.equal(param1_, param3_))
+
     pass

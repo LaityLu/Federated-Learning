@@ -8,6 +8,7 @@ import numpy as np
 import torch
 import yaml
 from matplotlib import pyplot as plt
+from opacus.grad_sample import GradSampleModule
 
 import aggregator
 import attack
@@ -18,7 +19,7 @@ import sampler
 import trainer
 
 from utils import setup_logger, check, save_clients_data, save_global_model, save_client_model, \
-    save_select_info, load_clients_data, save_train_loss
+    save_select_info, load_clients_data, save_train_loss, save_aggr_clients, save_mal_records
 
 if __name__ == '__main__':
     # parse args
@@ -47,6 +48,8 @@ if __name__ == '__main__':
     # get the model
     global_model = getattr(model, config['Model']['name'])(**config['Model']['args'])
     global_model.to(device)
+    global_model = GradSampleModule(global_model)
+
     # save the initial global model
     if config['FL']['is_recover']:
         save_global_model(config['Dataset']['name'], 0, global_model)
@@ -71,8 +74,8 @@ if __name__ == '__main__':
 
     # get the trainer
     # normal trainer
-    local_trainer = getattr(trainer, config['Trainer']['name'])(**config['Trainer']['args'],
-                                                                device=device)
+    local_trainers = [getattr(trainer, config['Trainer']['name'])(idxes, **config['Trainer']['args'], device=device)
+                      for idxes in range(config['FL']['num_clients'])]
     if config['FL']['is_attack']:
         # malicious trainer
         attacker = getattr(attack, config['Attack']['name'])(**config['Attack']['args'],
@@ -86,6 +89,7 @@ if __name__ == '__main__':
 
     # fed training process
     select_info = []
+    aggr_info = []
     num_select_clients = max(int(config['FL']['frac'] * config['FL']['num_clients']), 1)
     clients_idxes = np.arange(config['FL']['num_clients'])
     if config['FL']['is_attack']:
@@ -93,6 +97,7 @@ if __name__ == '__main__':
     else:
         benign_client_idxes = clients_idxes
     # malicious_records = [0] * config['FL']['num_clients']
+    malicious_records = dict()
     round_losses = []
     MA = []
     BA = []
@@ -108,14 +113,14 @@ if __name__ == '__main__':
                                               config['Attack']['num_adv_each_round'], replace=False).tolist()
             select_adv = random.sample(config['Attack']['adversary_list'], config['Attack']['num_adv_each_round'])
             select_clients += select_adv
-        select_info.append(select_clients)
+        select_info.append(select_clients.copy())
         num_dps = [list_num_dps[i] for i in select_clients]
 
         # begin training
         logger.info("-----  Round {:3d}  -----".format(rd))
         logger.info('selected clients:{}'.format(select_clients))
         # store the local loss and local model for each client
-        locals_losses = []
+        local_losses = []
         local_models = []
         for i, idxes in enumerate(select_clients):
             if config['FL']['is_attack'] and idxes in config['Attack']['adversary_list'] and (
@@ -126,10 +131,10 @@ if __name__ == '__main__':
                                                         copy.deepcopy(global_model), adversarial_index=idxes)
             # normal model training
             else:
-                local_model, local_loss = local_trainer.update(dataset_train, dict_clients[idxes],
-                                                               copy.deepcopy(global_model))
+                local_model, local_loss = local_trainers[idxes].update(dataset_train, dict_clients[idxes],
+                                                                       copy.deepcopy(global_model))
             local_models.append(local_model)
-            locals_losses.append(local_loss)
+            local_losses.append(local_loss)
             # save the client models
             if config['FL']['is_recover']:
                 save_client_model(config['Dataset']['name'], rd, local_models)
@@ -138,8 +143,14 @@ if __name__ == '__main__':
         if config['FL']['is_defense']:
             global_model_state_dict, mal_clients = defender.exec(global_model.state_dict(), local_models,
                                                                  select_clients, num_dps, config['FL']['aggregator'])
-            # for idx in mal_clients:
-            #     malicious_records[idx] += 1
+            for idx in mal_clients:
+                if idx in malicious_records.keys():
+                    malicious_records[idx] += 1
+                else:
+                    malicious_records[idx] = 1
+                select_clients.remove(idx)
+            aggr_info.append(select_clients)
+
         else:
             # normal aggregation
             global_model_state_dict = getattr(aggregator, config['FL']['aggregator'])(local_models, num_dps)
@@ -151,7 +162,7 @@ if __name__ == '__main__':
             save_global_model(config['Dataset']['name'], rd + 1, global_model)
 
         # compute the average loss in a round
-        round_loss = sum(locals_losses) / len(locals_losses)
+        round_loss = sum(local_losses) / len(local_losses)
         logger.info('Training average loss: {:.3f}'.format(round_loss))
         round_losses.append(round_loss)
 
@@ -160,7 +171,7 @@ if __name__ == '__main__':
         # print("Training accuracy: {:.2f}%, loss: {:.3f}".format(train_accuracy, train_loss))
         # logger.info("Training accuracy: {:.2f}%, loss: {:.3f}".format(train_accuracy, train_loss))
         # main accuracy
-        test_accuracy, test_loss = local_trainer.eval(dataset_test, global_model)
+        test_accuracy, test_loss = local_trainers[0].eval(dataset_test, global_model)
         logger.info("Testing accuracy: {:.2f}%, loss: {:.3f}".format(test_accuracy, test_loss))
         MA.append(round(test_accuracy.item(), 2))
         # backdoor accuracy
@@ -174,9 +185,14 @@ if __name__ == '__main__':
             logger.info("Attack accuracy: {:.2f}%".format(test_attack_accuracy))
             BA.append(round(test_attack_accuracy.item(), 2))
 
+        torch.cuda.empty_cache()
+
     # save the select info
     info_path = os.path.join("./save/historical_information", config['Dataset']['name'])
     save_select_info(info_path, select_info)
+    save_aggr_clients(info_path, aggr_info)
+    sorted_dict = dict(sorted(malicious_records.items(), key=lambda item: item[1], reverse=True))
+    save_mal_records(info_path, sorted_dict)
     # save the training loss info
     save_train_loss(info_path, round_losses)
 

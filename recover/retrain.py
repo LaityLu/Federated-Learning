@@ -1,4 +1,5 @@
 import copy
+import time
 
 import aggregator
 from utils import setup_logger
@@ -31,19 +32,20 @@ class Retrain(RecoverBase):
         # get the initial global model
         new_global_model = old_global_models[0]
         for rd in range(self.old_global_round):
+            start_time = time.time()
             # select remaining clients
             remaining_clients_id, _, num_dps = self.remove_malicious_clients(self.select_info[rd])
             # begin training
             logger.info("----- Retrain Recover Round {:3d}  -----".format(rd))
             logger.info(f'remaining client:{remaining_clients_id}')
             # store the local loss and local model for each client
-            locals_losses = []
+            local_losses = []
             local_models = []
             for i, idxes in enumerate(remaining_clients_id):
                 local_model, local_loss = local_trainer.update(self.dataset_train, self.dict_clients[idxes],
                                                                copy.deepcopy(new_global_model))
                 local_models.append(local_model)
-                locals_losses.append(local_loss)
+                local_losses.append(local_loss)
 
             # aggregation
             global_model_state_dict = getattr(aggregator, self.aggregator)(local_models, num_dps)
@@ -52,9 +54,11 @@ class Retrain(RecoverBase):
             new_global_model.load_state_dict(global_model_state_dict)
 
             # compute the average loss in a round
-            round_loss = sum(locals_losses) / len(locals_losses)
+            round_loss = sum(local_losses) / len(local_losses)
             logger.info('Training average loss: {:.3f}'.format(round_loss))
             round_losses.append(round_loss)
+
+            self.time_cost += time.time() - start_time
 
             # testing
             # main accuracy
@@ -63,6 +67,7 @@ class Retrain(RecoverBase):
             MA.append(round(test_accuracy.item(), 2))
 
         logger.info("----- The recover process end -----")
+        logger.info(f"Total time cost: {self.time_cost}s")
         logger.debug(f'Main Accuracy:{MA}')
 
         return new_global_model.state_dict()

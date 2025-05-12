@@ -11,7 +11,7 @@ import model
 import recover
 import trainer
 from utils import check, load_global_model, load_client_model, load_clients_data, \
-    load_select_info, load_train_loss, setup_logger
+    load_select_info, load_train_loss, setup_logger, load_aggr_clients
 
 if __name__ == '__main__':
     # parse args
@@ -62,8 +62,10 @@ if __name__ == '__main__':
     select_info_path = os.path.join("./save/historical_information", config['Dataset']['name'])
     select_info = load_select_info(select_info_path)
     train_loss = load_train_loss(select_info_path)
+    # load the benign clients that defense algorithm chose
+    aggr_clients = load_aggr_clients(select_info_path)
     # load the malicious client id / unlearned client id
-    malicious_clients = [1, 2, 3, 4]
+    malicious_clients = config['Recover']['malicious_clients']
     # load the models
     old_global_models = []
     old_client_models = []
@@ -88,6 +90,7 @@ if __name__ == '__main__':
     recover_maker = getattr(recover, config['Recover']['name'])(dataset_train, dataset_test, dict_clients,
                                                                 list_num_dps, select_info, malicious_clients,
                                                                 train_loss=train_loss,
+                                                                aggr_clients=aggr_clients,
                                                                 **config['Recover']['args'])
     # get the recovered global model
     recovered_global_model_state = recover_maker.recover(local_trainer, old_global_models, old_client_models)

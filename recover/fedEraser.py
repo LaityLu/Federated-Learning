@@ -1,4 +1,5 @@
 import copy
+import time
 
 import torch
 
@@ -36,6 +37,7 @@ class FedEraser(RecoverBase):
         # get the initial global model
         new_global_model = old_global_models[0]
         for rd in range(0, self.old_global_round, self.round_interval):
+            start_time = time.time()
             # select remaining clients
             remaining_clients_id, remaining_clients_models, num_dps = \
                 self.remove_malicious_clients(self.select_info[rd], old_client_models[rd])
@@ -43,7 +45,7 @@ class FedEraser(RecoverBase):
             logger.info("----- FedEraser Recover Round {:3d}  -----".format(rd))
             logger.info(f'remaining client:{remaining_clients_id}')
             # store the local loss and local model for each client
-            locals_losses = []
+            local_losses = []
             local_models = []
 
             if rd == 0:
@@ -56,15 +58,17 @@ class FedEraser(RecoverBase):
                     local_model, local_loss = local_trainer.update(self.dataset_train, self.dict_clients[idxes],
                                                                    copy.deepcopy(new_global_model))
                     local_models.append(local_model)
-                    locals_losses.append(local_loss)
+                    local_losses.append(local_loss)
                 # calibration and aggregation
                 new_global_model.load_state_dict(self.calibration_training(old_global_models[rd],
                                                                            remaining_clients_models, new_global_model,
                                                                            local_models, num_dps))
                 # compute the average loss in a round
-                round_loss = sum(locals_losses) / len(locals_losses)
+                round_loss = sum(local_losses) / len(local_losses)
             logger.info('Training average loss: {:.3f}'.format(round_loss))
             round_losses.append(round_loss)
+
+            self.time_cost += time.time() - start_time
 
             # testing
             # main accuracy
@@ -73,6 +77,7 @@ class FedEraser(RecoverBase):
             MA.append(round(test_accuracy.item(), 2))
 
         logger.info("----- The recover process end -----")
+        logger.info(f"Total time cost: {self.time_cost}s")
         logger.debug(f'Main Accuracy:{MA}')
 
         return new_global_model.state_dict()

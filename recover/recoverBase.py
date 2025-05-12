@@ -7,6 +7,7 @@ class RecoverBase:
         self.select_info = select_info
         self.malicious_clients = malicious_clients
         self.old_global_round = len(select_info)
+        self.time_cost = 0
 
     def remove_malicious_clients(self, c_ids, old_CM=None, *args, **kwargs):
         remaining_clients_id = []
